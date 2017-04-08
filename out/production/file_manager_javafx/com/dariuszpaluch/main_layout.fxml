@@ -1,0 +1,13 @@
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.FlowPane?>
+<FlowPane fx:controller="com.dariuszpaluch.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <FlowPane>
+        <Button text="Load" fx:id="loadButton"/>
+        <Button text="Go up" fx:id="goUpButton"/>
+    </FlowPane>
+    <ListView fx:id="filesListView" />
+</FlowPane>
