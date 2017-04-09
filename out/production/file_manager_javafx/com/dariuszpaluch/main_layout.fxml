@@ -3,11 +3,13 @@
 
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Text?>
 <FlowPane fx:controller="com.dariuszpaluch.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <FlowPane>
         <Button text="Load" fx:id="loadButton"/>
         <Button text="Go up" fx:id="goUpButton"/>
+        <Text text="currentPath" fx:id="currentPathText"/>
     </FlowPane>
     <ListView fx:id="filesListView" />
 </FlowPane>

@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
 import javax.swing.*;
 import java.io.*;
@@ -20,6 +21,8 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 
 public class Controller {
+    @FXML
+    Text currentPathText;
     @FXML
     Button loadButton;
     @FXML
@@ -39,17 +42,23 @@ public class Controller {
         this.curredFolderList = FXCollections.observableArrayList();
         filesListView.setItems(this.curredFolderList);
         filesListView.setOnMouseClicked(this::onListItemDoubleClick);
+
+        this.openCurrectDir();
     }
 
     @FXML
     public void onClickLoadButton(ActionEvent event) {
-        this.currentPath = Paths.get(System.getProperty("user.dir"));
-        this.readAllFilesInFolder(this.currentPath);
+        this.openCurrectDir();
     }
 
     @FXML
     public void onClickGoUpButton(ActionEvent event) {
         this.goUpDir();
+    }
+
+    private void openCurrectDir() {
+        this.currentPath = Paths.get(System.getProperty("user.dir"));
+        this.readAllFilesInFolder(this.currentPath);
     }
 
     private void onListItemDoubleClick(MouseEvent event) {
@@ -60,22 +69,35 @@ public class Controller {
     }
 
     private void goToNextDir(String dir) {
-        this.currentPath = this.currentPath.resolve(dir);
-        readAllFilesInFolder(this.currentPath);
+        Path tempPath = this.currentPath.resolve(dir);
+        if(isDir(tempPath)) {
+            this.currentPath = tempPath;
+            readAllFilesInFolder(this.currentPath);
+            goUpButton.setDisable(false);
+        }
     }
 
     private void goUpDir() {
-        this.currentPath = this.currentPath.getParent();
+        this.currentPath =  this.currentPath.getParent();
         readAllFilesInFolder(this.currentPath);
+
+        if(this.currentPath.getParent() == null) {
+            goUpButton.setDisable(true);
+        }
     }
+
     private boolean isDir(Path path) {
         if (path == null || !Files.exists(path)) return false;
         else return Files.isDirectory(path);
     }
 
-    public void readAllFilesInFolder(final Path path) {
-        this.curredFolderList.clear();
+    private void updatePathText() {
+        this.currentPathText.setText(this.currentPath.toString());
+    }
 
+    public void readAllFilesInFolder(final Path path) {
+        this.updatePathText();
+        this.curredFolderList.clear();
 
         if(isDir(path)) {
             final File folder = path.toFile();
@@ -88,5 +110,6 @@ public class Controller {
                 }
             }
         }
+
     }
 }
