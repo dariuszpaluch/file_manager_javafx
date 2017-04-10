@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/NameWindowController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/name_window.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/file_manager_javafx/com/dariuszpaluch/main_layout.fxml" afterPath="$PROJECT_DIR$/out/production/file_manager_javafx/com/dariuszpaluch/main_layout.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/dariuszpaluch/Controller.java" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/Controller.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/dariuszpaluch/main_layout.fxml" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/main_layout.fxml" />
     </list>
@@ -132,8 +128,8 @@
           <file leaf-file-name="Scene.java" pinned="false" current-in-tab="false">
             <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/scene/Scene.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="111">
-                  <caret line="2494" column="0" lean-forward="false" selection-start-line="2494" selection-start-column="0" selection-end-line="2494" selection-end-column="0" />
+                <state relative-caret-position="26">
+                  <caret line="2489" column="84" lean-forward="false" selection-start-line="2489" selection-start-column="84" selection-end-line="2489" selection-end-column="84" />
                   <folding>
                     <element signature="e#66617#66618#0" expanded="true" />
                     <element signature="e#66663#66664#0" expanded="true" />
@@ -145,8 +141,8 @@
           <file leaf-file-name="main_layout.fxml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/main_layout.fxml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="272">
-                  <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+                <state relative-caret-position="187">
+                  <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
                   <folding />
                 </state>
               </provider>
@@ -188,13 +184,13 @@
           <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/Controller.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="267">
-                  <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+                <state relative-caret-position="259">
+                  <caret line="72" column="35" lean-forward="true" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#1583#1584#0" expanded="true" />
-                    <element signature="e#1642#1643#0" expanded="true" />
-                    <element signature="e#2553#2575#0" expanded="true" />
+                    <element signature="e#2141#2142#0" expanded="true" />
+                    <element signature="e#2200#2201#0" expanded="true" />
+                    <element signature="e#3115#3137#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -242,8 +238,8 @@
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/change_name_window.fxml" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/name_window.fxml" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/NameWindowController.java" />
-        <option value="$PROJECT_DIR$/src/com/dariuszpaluch/Controller.java" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/main_layout.fxml" />
+        <option value="$PROJECT_DIR$/src/com/dariuszpaluch/Controller.java" />
       </list>
     </option>
   </component>
@@ -778,16 +774,16 @@
       <workItem from="1359379250712" duration="1302000" />
       <workItem from="1491605598776" duration="1145000" />
       <workItem from="1491687658168" duration="8607000" />
-      <workItem from="1491810709083" duration="4551000" />
+      <workItem from="1491810709083" duration="4984000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15605000" />
+    <option name="totallyTimeSpent" value="16038000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -867,9 +863,9 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1583#1584#0" expanded="true" />
-            <element signature="e#1642#1643#0" expanded="true" />
-            <element signature="e#2553#2575#0" expanded="true" />
+            <element signature="e#2141#2142#0" expanded="true" />
+            <element signature="e#2200#2201#0" expanded="true" />
+            <element signature="e#3115#3137#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1701,9 +1697,9 @@
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1583#1584#0" expanded="true" />
-            <element signature="e#1642#1643#0" expanded="true" />
-            <element signature="e#2553#2575#0" expanded="true" />
+            <element signature="e#2141#2142#0" expanded="true" />
+            <element signature="e#2200#2201#0" expanded="true" />
+            <element signature="e#3115#3137#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1746,9 +1742,9 @@
           <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1583#1584#0" expanded="true" />
-            <element signature="e#1642#1643#0" expanded="true" />
-            <element signature="e#2553#2575#0" expanded="true" />
+            <element signature="e#2141#2142#0" expanded="true" />
+            <element signature="e#2200#2201#0" expanded="true" />
+            <element signature="e#3115#3137#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1921,17 +1917,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/scene/Scene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="2494" column="0" lean-forward="false" selection-start-line="2494" selection-start-column="0" selection-end-line="2494" selection-end-column="0" />
-          <folding>
-            <element signature="e#66617#66618#0" expanded="true" />
-            <element signature="e#66663#66664#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/NameWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
@@ -1965,15 +1950,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/scene/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="2489" column="84" lean-forward="false" selection-start-line="2489" selection-start-column="84" selection-end-line="2489" selection-end-column="84" />
+          <folding>
+            <element signature="e#66617#66618#0" expanded="true" />
+            <element signature="e#66663#66664#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="52" column="0" lean-forward="false" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        <state relative-caret-position="259">
+          <caret line="72" column="35" lean-forward="true" selection-start-line="72" selection-start-column="35" selection-end-line="72" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1583#1584#0" expanded="true" />
-            <element signature="e#1642#1643#0" expanded="true" />
-            <element signature="e#2553#2575#0" expanded="true" />
+            <element signature="e#2141#2142#0" expanded="true" />
+            <element signature="e#2200#2201#0" expanded="true" />
+            <element signature="e#3115#3137#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1983,8 +1979,8 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+        <state relative-caret-position="187">
+          <caret line="11" column="61" lean-forward="true" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
           <folding />
         </state>
       </provider>

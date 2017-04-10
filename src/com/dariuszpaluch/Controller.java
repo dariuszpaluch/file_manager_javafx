@@ -3,7 +3,6 @@ package com.dariuszpaluch;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,7 +15,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -25,6 +23,8 @@ import java.nio.file.Paths;
 
 public class Controller {
     public Button refreshButton;
+    public ListView rightFilesListView;
+    public Button deleteButton;
     @FXML
     Button changeNameButton;
     @FXML
@@ -35,23 +35,34 @@ public class Controller {
     Button goUpButton;
 
     @FXML
-    ListView<String> filesListView;
+    ListView<String> leftFilesListView;
 
     Path currentPath;
     ObservableList<String> curredFolderList;
-
+    ObservableList<String> rightFolderList;
     @FXML
     void initialize() {
         loadButton.setOnAction(this::onClickLoadButton);
         goUpButton.setOnAction(this::onClickGoUpButton);
         changeNameButton.setOnAction(this::onClickChangeNameButton);
         refreshButton.setOnAction(this::onClickRefreshButton);
+        deleteButton.setOnAction(this::onClickDeleteButton);
 
         this.curredFolderList = FXCollections.observableArrayList();
-        filesListView.setItems(this.curredFolderList);
-        filesListView.setOnMouseClicked(this::onListItemDoubleClick);
+        leftFilesListView.setItems(this.curredFolderList);
+        leftFilesListView.setOnMouseClicked(this::onListItemDoubleClick);
+
+        this.rightFolderList = FXCollections.observableArrayList();
+        rightFilesListView.setItems(this.rightFolderList);
 
         this.openCurrectDir();
+    }
+
+    private void onClickDeleteButton(ActionEvent actionEvent) {
+        String name = leftFilesListView.getSelectionModel().getSelectedItem();
+        File selectedFile = new File(this.currentPath + File.separator + name);
+        selectedFile.delete();
+        readAllFilesInFolder(this.currentPath);
     }
 
     private void onClickRefreshButton(ActionEvent actionEvent) {
@@ -65,7 +76,7 @@ public class Controller {
     }
 
     private void openEditNameWindow(ActionEvent actionEvent) {
-        String name = filesListView.getSelectionModel().getSelectedItem();
+        String name = leftFilesListView.getSelectionModel().getSelectedItem();
         File selectedFile = new File(this.currentPath + File.separator + name);
 
         if(name != null ) {
@@ -110,7 +121,7 @@ public class Controller {
 
     private void onListItemDoubleClick(MouseEvent event) {
         if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2){
-            String selectedDir = filesListView.getSelectionModel().getSelectedItem();
+            String selectedDir = leftFilesListView.getSelectionModel().getSelectedItem();
             this.goToNextDir(selectedDir);
         }
     }
@@ -153,7 +164,9 @@ public class Controller {
                 String fileName = fileEntry.getName();
                 if (fileEntry.isDirectory()) {
                     this.curredFolderList.add(fileName);
+                    this.rightFolderList.add(fileName);
                 } else {
+                    this.rightFolderList.add(fileName);
                     this.curredFolderList.add(fileName);
                 }
             }

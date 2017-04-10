@@ -11,10 +11,12 @@
         <Button text="Go up" fx:id="goUpButton"/>
         <Button text="Change name" fx:id="changeNameButton"/>
         <Button text="Refresh" fx:id="refreshButton"/>
+        <Button text="Delete" fx:id="deleteButton"/>
         <Text text="currentPath" fx:id="currentPathText"/>
     </FlowPane>
     <FlowPane orientation="VERTICAL">
-        <ListView fx:id="filesListView" />
+        <ListView fx:id="leftFilesListView"/>
+        <ListView fx:id="rightFilesListView"/>
 
     </FlowPane>
 </FlowPane>
