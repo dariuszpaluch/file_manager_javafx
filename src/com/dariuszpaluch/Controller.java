@@ -1,26 +1,32 @@
 package com.dariuszpaluch;
 
-import com.sun.javafx.scene.control.skin.LabeledText;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
-import javax.swing.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 public class Controller {
+    public Button refreshButton;
+    @FXML
+    Button changeNameButton;
     @FXML
     Text currentPathText;
     @FXML
@@ -38,12 +44,53 @@ public class Controller {
     void initialize() {
         loadButton.setOnAction(this::onClickLoadButton);
         goUpButton.setOnAction(this::onClickGoUpButton);
+        changeNameButton.setOnAction(this::onClickChangeNameButton);
+        refreshButton.setOnAction(this::onClickRefreshButton);
 
         this.curredFolderList = FXCollections.observableArrayList();
         filesListView.setItems(this.curredFolderList);
         filesListView.setOnMouseClicked(this::onListItemDoubleClick);
 
         this.openCurrectDir();
+    }
+
+    private void onClickRefreshButton(ActionEvent actionEvent) {
+        this.readAllFilesInFolder(this.currentPath);
+    }
+
+    private void onClickChangeNameButton(ActionEvent actionEvent) {
+//        this.curredFolderList.get
+        this.openEditNameWindow(actionEvent);
+
+    }
+
+    private void openEditNameWindow(ActionEvent actionEvent) {
+        String name = filesListView.getSelectionModel().getSelectedItem();
+        File selectedFile = new File(this.currentPath + File.separator + name);
+
+        if(name != null ) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("name_window.fxml"));
+                Parent root = (Parent) fxmlLoader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.initModality(Modality.WINDOW_MODAL);
+                stage.initOwner(
+                        ((Node)actionEvent.getSource()).getScene().getWindow() );
+                NameWindowController controller = fxmlLoader.<NameWindowController>getController();
+//                controller.setName(name);
+                controller.setOldFile(selectedFile);
+//                stage.setOnCloseRequest(event -> readAllFilesInFolder(currentPath));
+                stage.setTitle("Change file name");
+                stage.showAndWait();
+                stage.setOnCloseRequest(event -> {
+                    System.out.println("View  got close request. Notifying callback");
+//                    onCloseCallback.get().invoke();
+                });
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
@@ -96,6 +143,7 @@ public class Controller {
     }
 
     public void readAllFilesInFolder(final Path path) {
+        System.out.println(path);
         this.updatePathText();
         this.curredFolderList.clear();
 
