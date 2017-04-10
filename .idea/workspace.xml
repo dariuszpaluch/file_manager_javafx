@@ -2,13 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/DateUtils.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/FileRow.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/FileUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/file_manager_javafx/com/dariuszpaluch/main_layout.fxml" afterPath="$PROJECT_DIR$/out/production/file_manager_javafx/com/dariuszpaluch/main_layout.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/dariuszpaluch/Controller.java" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/Controller.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/dariuszpaluch/Main.java" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/Main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/dariuszpaluch/main_layout.fxml" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/main_layout.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -109,11 +102,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Controller.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/Controller.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-731">
-                  <caret line="116" column="51" lean-forward="true" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
+                <state relative-caret-position="748">
+                  <caret line="209" column="13" lean-forward="true" selection-start-line="209" selection-start-column="13" selection-end-line="209" selection-end-column="13" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#4053#4075#0" expanded="true" />
@@ -180,11 +173,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="main_layout.fxml" pinned="false" current-in-tab="false">
+          <file leaf-file-name="main_layout.fxml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/main_layout.fxml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="459">
-                  <caret line="27" column="48" lean-forward="true" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+                <state relative-caret-position="476">
+                  <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -279,6 +272,7 @@
       <find>Path</find>
       <find>table</find>
       <find>currentPat</find>
+      <find>onListItemDoubleClick</find>
     </findStrings>
     <replaceStrings>
       <replace>File</replace>
@@ -316,9 +310,9 @@
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/FilesTableView.java" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/FileUtils.java" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/DateUtils.java" />
-        <option value="$PROJECT_DIR$/src/com/dariuszpaluch/main_layout.fxml" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/FileRow.java" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/Controller.java" />
+        <option value="$PROJECT_DIR$/src/com/dariuszpaluch/main_layout.fxml" />
       </list>
     </option>
   </component>
@@ -864,12 +858,12 @@
       <workItem from="1491810709083" duration="4984000" />
       <workItem from="1491832652967" duration="2306000" />
       <workItem from="1491847191258" duration="177000" />
-      <workItem from="1491847872151" duration="6999000" />
+      <workItem from="1491847872151" duration="7216000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25520000" />
+    <option name="totallyTimeSpent" value="25737000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -5854,17 +5848,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/main_layout.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="48" lean-forward="true" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/collections/ListChangeBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="244">
@@ -5927,8 +5910,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/Controller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-731">
-          <caret line="116" column="51" lean-forward="true" selection-start-line="116" selection-start-column="51" selection-end-line="116" selection-end-column="51" />
+        <state relative-caret-position="748">
+          <caret line="209" column="13" lean-forward="true" selection-start-line="209" selection-start-column="13" selection-end-line="209" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4053#4075#0" expanded="true" />
@@ -5941,6 +5924,17 @@
             <marker date="1491854891777" expanded="false" signature="6345:6356" ph=" { " />
             <marker date="1491854891777" expanded="false" signature="6414:6420" ph=" }" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/main_layout.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

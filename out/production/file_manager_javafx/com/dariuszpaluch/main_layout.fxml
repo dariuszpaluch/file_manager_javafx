@@ -24,8 +24,8 @@
     </top>
     <center>
         <HBox>
-            <FilesTableView fx:id="leftFilesTableView"/>
-            <FilesTableView fx:id="rightFilesTableView"/>
+            <FilesTableView fx:id="leftFilesTableView" HBox.hgrow="ALWAYS"/>
+            <FilesTableView fx:id="rightFilesTableView" HBox.hgrow="ALWAYS"/>
             <!--<ListView fx:id="leftFilesListView"/>-->
             <!--<ListView fx:id="rightFilesListView"/>-->
         </HBox>
