@@ -4,19 +4,38 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Text?>
-<FlowPane fx:controller="com.dariuszpaluch.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-    <FlowPane>
-        <Button text="Load" fx:id="loadButton"/>
-        <Button text="Go up" fx:id="goUpButton"/>
-        <Button text="Change name" fx:id="changeNameButton"/>
-        <Button text="Refresh" fx:id="refreshButton"/>
-        <Button text="Delete" fx:id="deleteButton"/>
-        <Text text="currentPath" fx:id="currentPathText"/>
-    </FlowPane>
-    <FlowPane orientation="VERTICAL">
-        <ListView fx:id="leftFilesListView"/>
-        <ListView fx:id="rightFilesListView"/>
 
-    </FlowPane>
-</FlowPane>
+<?import com.dariuszpaluch.FilesTableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<BorderPane fx:controller="com.dariuszpaluch.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <FlowPane>
+            <Button text="Load" fx:id="loadButton"/>
+            <Button text="Go up" fx:id="goUpButton"/>
+            <Button text="Change name" fx:id="changeNameButton"/>
+            <Button text="Refresh" fx:id="refreshButton"/>
+            <Button text="Delete" fx:id="deleteButton"/>
+            <ChoiceBox fx:id="currentDriveChoiceBox" />
+            <Text text="currentPath" fx:id="currentPathText"/>
+        </FlowPane>
+    </top>
+    <center>
+        <HBox>
+            <FilesTableView fx:id="leftFilesTableView"/>
+            <FilesTableView fx:id="rightFilesTableView"/>
+            <!--<ListView fx:id="leftFilesListView"/>-->
+            <!--<ListView fx:id="rightFilesListView"/>-->
+        </HBox>
+    </center>
+    <right>
+        <Button text="test"/>
+    </right>
+    <bottom>
+        <FlowPane alignment="CENTER" orientation="HORIZONTAL">
+            <Text text="Copyright© Dariusz Paluch"/>
+        </FlowPane>
+    </bottom>
+</BorderPane>

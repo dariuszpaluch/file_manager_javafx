@@ -1,5 +1,7 @@
 package com.dariuszpaluch;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,37 +11,39 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.ChoiceBox;
+
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.*;
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class Controller {
+    public ChoiceBox<String> currentDriveChoiceBox;
+    public Text currentPathText;
+    public Button loadButton;
+    public Button goUpButton;
+
     public Button refreshButton;
-    public ListView rightFilesListView;
     public Button deleteButton;
-    @FXML
-    Button changeNameButton;
-    @FXML
-    Text currentPathText;
-    @FXML
-    Button loadButton;
-    @FXML
-    Button goUpButton;
+    public Button changeNameButton;
+    public FilesTableView leftFilesTableView;
+    public FilesTableView rightFilesTableView;
+
 
     @FXML
-    ListView<String> leftFilesListView;
 
     Path currentPath;
-    ObservableList<String> curredFolderList;
-    ObservableList<String> rightFolderList;
+    ObservableList<String> listOfDrivers;
+    ObservableList<FileRow> leftFileRows;
+    ObservableList<FileRow> rightFileRows;
+
     @FXML
     void initialize() {
         loadButton.setOnAction(this::onClickLoadButton);
@@ -48,21 +52,39 @@ public class Controller {
         refreshButton.setOnAction(this::onClickRefreshButton);
         deleteButton.setOnAction(this::onClickDeleteButton);
 
-        this.curredFolderList = FXCollections.observableArrayList();
-        leftFilesListView.setItems(this.curredFolderList);
-        leftFilesListView.setOnMouseClicked(this::onListItemDoubleClick);
+        this.leftFileRows = FXCollections.observableArrayList();
+        this.rightFileRows = FXCollections.observableArrayList();
 
-        this.rightFolderList = FXCollections.observableArrayList();
-        rightFilesListView.setItems(this.rightFolderList);
 
-        this.openCurrectDir();
+        leftFilesTableView.setItems(this.leftFileRows);
+        rightFilesTableView.setItems(this.rightFileRows);
+
+        this.listOfDrivers = FXCollections.observableArrayList();
+        currentDriveChoiceBox.setItems(this.listOfDrivers);
+        currentDriveChoiceBox.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                onSelectDriver((int)newValue);
+            }
+        });
+
+        this.prepareListOfDrivers();
+        currentDriveChoiceBox.getSelectionModel().selectFirst();
+
+        this.leftFilesTableView.setOnMouseClicked(this::onListItemDoubleClick);
+    }
+
+    @FXML
+    private void onSelectDriver(int selectedIndex) {
+        this.currentPath = Paths.get(this.listOfDrivers.get(selectedIndex));
+        readAllFilesInFolder(this.currentPath);
     }
 
     private void onClickDeleteButton(ActionEvent actionEvent) {
-        String name = leftFilesListView.getSelectionModel().getSelectedItem();
-        File selectedFile = new File(this.currentPath + File.separator + name);
-        selectedFile.delete();
-        readAllFilesInFolder(this.currentPath);
+//        String name = leftFilesListView.getSelectionModel().getSelectedItem();
+//        File selectedFile = new File(this.currentPath + File.separator + name);
+//        selectedFile.delete();
+//        readAllFilesInFolder(this.currentPath);
     }
 
     private void onClickRefreshButton(ActionEvent actionEvent) {
@@ -76,7 +98,7 @@ public class Controller {
     }
 
     private void openEditNameWindow(ActionEvent actionEvent) {
-        String name = leftFilesListView.getSelectionModel().getSelectedItem();
+        String name = leftFileRows.get(leftFilesTableView.getSelectionModel().getFocusedIndex()).getName();
         File selectedFile = new File(this.currentPath + File.separator + name);
 
         if(name != null ) {
@@ -114,14 +136,23 @@ public class Controller {
         this.goUpDir();
     }
 
+    private void prepareListOfDrivers() {
+        File[] drivers  = new File(System.getProperty("user.dir")).listRoots();
+
+        for(File driver : drivers) {
+            this.listOfDrivers.add(driver.getPath());
+        }
+
+    }
     private void openCurrectDir() {
         this.currentPath = Paths.get(System.getProperty("user.dir"));
         this.readAllFilesInFolder(this.currentPath);
     }
 
     private void onListItemDoubleClick(MouseEvent event) {
+        System.out.println("CLICK");
         if(event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2){
-            String selectedDir = leftFilesListView.getSelectionModel().getSelectedItem();
+            String selectedDir = ((FileRow)this.leftFilesTableView.getSelectionModel().getSelectedItem()).getName();
             this.goToNextDir(selectedDir);
         }
     }
@@ -153,21 +184,28 @@ public class Controller {
         this.currentPathText.setText(this.currentPath.toString());
     }
 
+
     public void readAllFilesInFolder(final Path path) {
         System.out.println(path);
         this.updatePathText();
-        this.curredFolderList.clear();
+        this.leftFileRows.clear();
+//        this.curredFolderList.clear();
 
         if(isDir(path)) {
             final File folder = path.toFile();
             for (final File fileEntry : folder.listFiles()) {
+                FileRow fileRow = new FileRow(fileEntry);
                 String fileName = fileEntry.getName();
+                System.out.println(fileName);
+
                 if (fileEntry.isDirectory()) {
-                    this.curredFolderList.add(fileName);
-                    this.rightFolderList.add(fileName);
+                    this.leftFileRows.add(fileRow);
+//                    this.rightFolderList.add(fileRow);
                 } else {
-                    this.rightFolderList.add(fileName);
-                    this.curredFolderList.add(fileName);
+                    this.leftFileRows.add(fileRow);
+
+//                    this.rightFolderList.add(fileName);
+//                    this.curredFolderList.add(fileName);
                 }
             }
         }

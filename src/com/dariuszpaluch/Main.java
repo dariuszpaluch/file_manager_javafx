@@ -21,7 +21,7 @@ public class Main extends Application {
         loader.setLocation(this.getClass().getResource("main_layout.fxml"));
         Parent stackPane = loader.load();
 
-        Scene scene = new Scene(stackPane, 500, 500);
+        Scene scene = new Scene(stackPane, 1000, 500);
 
         primaryStage.setResizable(true);
         primaryStage.setScene(scene);
