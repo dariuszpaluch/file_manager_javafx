@@ -1,0 +1,31 @@
+<?import javafx.scene.control.Button?>
+
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane
+        fx:controller="com.dariuszpaluch.java.Controller"
+        xmlns:fx="http://javafx.com/fxml"
+        stylesheets="@/styles/main_layout.css">
+    <top>
+        <FlowPane>
+            <Button text="EN" fx:id="changeLocation" />
+            <Button text="%changeName" fx:id="changeNameButton"/>
+            <Button text="%delete" fx:id="deleteButton"/>
+        </FlowPane>
+    </top>
+    <center>
+        <HBox spacing="10">
+            <fx:include source="files_browser.fxml" fx:id="leftFilesBrowser"/>
+            <fx:include source="files_browser.fxml" fx:id="rightFilesBrowser"/>
+        </HBox>
+    </center>
+    <bottom>
+        <FlowPane styleClass="footer">
+            <Text text="%copyright"/>
+        </FlowPane>
+    </bottom>
+</BorderPane>

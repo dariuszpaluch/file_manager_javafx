@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.text.Text?>
+
+<FlowPane
+        alignment="center"
+        hgap="10" vgap="10"
+        xmlns:fx="http://javafx.com/fxml/1"
+        xmlns="http://javafx.com/javafx/8.0.111"
+        fx:controller="com.dariuszpaluch.java.NameWindowController">
+
+    <TextField fx:id="nameTextField" />
+    <Text fx:id="errorText" />
+    <FlowPane alignment="BASELINE_CENTER">
+        <Button fx:id="cancelButton" text="%cancel" />
+        <Button fx:id="saveButton" text="%save" />
+    </FlowPane>
+</FlowPane>

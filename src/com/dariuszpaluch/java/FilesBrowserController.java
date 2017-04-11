@@ -1,4 +1,4 @@
-package com.dariuszpaluch;
+package com.dariuszpaluch.java;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

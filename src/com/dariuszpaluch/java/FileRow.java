@@ -1,15 +1,8 @@
-package com.dariuszpaluch;
-
-import javafx.beans.property.SimpleStringProperty;
+package com.dariuszpaluch.java;
 
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.PosixFileAttributes;
-import java.nio.file.attribute.PosixFilePermissions;
 
 public class FileRow {
 

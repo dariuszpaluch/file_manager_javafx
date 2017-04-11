@@ -1,4 +1,4 @@
-package com.dariuszpaluch;
+package com.dariuszpaluch.java;
 
 
 import java.text.SimpleDateFormat;

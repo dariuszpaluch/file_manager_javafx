@@ -1,4 +1,4 @@
-package com.dariuszpaluch;
+package com.dariuszpaluch.java;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,4 +1,4 @@
-package com.dariuszpaluch;
+package com.dariuszpaluch.java;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;

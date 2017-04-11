@@ -1,9 +1,11 @@
-package com.dariuszpaluch;
+package com.dariuszpaluch.java;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
+
+import java.util.Locale;
 
 public class Controller {
     public Button deleteButton;
@@ -13,10 +15,33 @@ public class Controller {
     public FilesBrowserController leftFilesBrowserController;
     @FXML
     public FilesBrowserController rightFilesBrowserController;
+    public Button changeLocation;
+
+    String location = "pl";
 
     @FXML
     void initialize() {
         deleteButton.setOnAction(this::onClickDeleteButton);
+        this.changeLocation.setOnAction(this::onChangeLocationButtonClick);
+    }
+
+    private void onChangeLocationButtonClick(ActionEvent actionEvent) {
+        this.onToogleLocation();
+    }
+
+    private void onToogleLocation() {
+        System.out.println("CHANGE LOCATION");
+
+        if(location == "pl") {
+            Locale.setDefault(new Locale("en"));
+
+            this.location="en";
+        }
+        else {
+            Locale.setDefault(new Locale("pl"));
+            this.location="pl";
+
+        }
     }
 
     private void onClickDeleteButton(ActionEvent actionEvent) {

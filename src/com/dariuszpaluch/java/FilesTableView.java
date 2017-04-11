@@ -1,7 +1,6 @@
-package com.dariuszpaluch;
+package com.dariuszpaluch.java;
 
 
-import com.dariuszpaluch.FileRow;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;

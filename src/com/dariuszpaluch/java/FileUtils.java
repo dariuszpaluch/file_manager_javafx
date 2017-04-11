@@ -1,4 +1,4 @@
-package com.dariuszpaluch;
+package com.dariuszpaluch.java;
 
 import java.io.File;
 import java.io.IOException;
