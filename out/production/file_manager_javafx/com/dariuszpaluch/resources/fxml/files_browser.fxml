@@ -14,7 +14,7 @@
       stylesheets="@/styles/files_browser.css">
 
     <FlowPane>
-        <Button fx:id="goUpButton" >
+        <Button fx:id="goUpButton">
             <graphic>
                 <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
                     <image>
@@ -23,7 +23,7 @@
                 </ImageView>
             </graphic>
             <tooltip>
-                <Tooltip text="asdasdasd"/>
+                <Tooltip text="%goUpDirTooltip"/>
             </tooltip>
         </Button>
         <Button fx:id="refreshButton">
@@ -34,6 +34,9 @@
                     </image>
                 </ImageView>
             </graphic>
+            <tooltip>
+                <Tooltip text="%refresh"/>
+            </tooltip>
         </Button>
         <ChoiceBox fx:id="driveChoiceBox" />
     </FlowPane>
