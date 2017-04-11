@@ -3,8 +3,13 @@ package com.dariuszpaluch;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.PosixFileAttributes;
+import java.nio.file.attribute.PosixFilePermissions;
 
 public class FileRow {
 
@@ -16,11 +21,13 @@ public class FileRow {
 
 
     public FileRow(File file) {
+        Path path = Paths.get(file.getPath());
+
         String name = file.getName();
         String ext = FileUtils.getExtension(file);
         String size = file.isDirectory() ? "<DIR>" : Long.toString(file.length());
         String date = DateUtils.getStringDateWithTime(file.lastModified());
-        String attr = ""; //TODO Get rwx attributes from file
+        String attr = FileUtils.getPermissionsToString(file);
 
         this.name = name;
         this.ext = ext;

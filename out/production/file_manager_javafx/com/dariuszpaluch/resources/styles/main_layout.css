@@ -1,0 +1,12 @@
+.root {
+}
+.button {
+    -fx-padding: 10px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+}
+
+.footer {
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}

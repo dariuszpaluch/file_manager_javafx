@@ -30,4 +30,13 @@ public class FileUtils {
         SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
         return sdf.format(file.lastModified());
     }
+
+    static public String getPermissionsToString(File file) {
+        String attr = "";
+        attr += file.canRead() ? "r" : "-";
+        attr += file.canWrite() ? "w" : "-";
+        attr += file.canExecute()? "x" : "-";
+
+        return attr;
+    }
 }

@@ -5,12 +5,13 @@
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Text?>
 
-<?import com.dariuszpaluch.FilesTableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import com.dariuszpaluch.FilesTableView?>
+
 <BorderPane fx:controller="com.dariuszpaluch.Controller"
-            xmlns:fx="http://javafx.com/fxml">
+            xmlns:fx="http://javafx.com/fxml" stylesheets="@../resources/styles/main_layout.css">
     <top>
         <FlowPane>
             <Button text="Load" fx:id="loadButton"/>
@@ -23,19 +24,15 @@
         </FlowPane>
     </top>
     <center>
-        <HBox>
+        <HBox spacing="10">
             <FilesTableView fx:id="leftFilesTableView" HBox.hgrow="ALWAYS"/>
             <FilesTableView fx:id="rightFilesTableView" HBox.hgrow="ALWAYS"/>
-            <!--<ListView fx:id="leftFilesListView"/>-->
-            <!--<ListView fx:id="rightFilesListView"/>-->
         </HBox>
     </center>
-    <right>
-        <Button text="test"/>
-    </right>
     <bottom>
-        <FlowPane alignment="CENTER" orientation="HORIZONTAL">
+        <FlowPane orientation="HORIZONTAL" styleClass="footer">
             <Text text="Copyright© Dariusz Paluch"/>
         </FlowPane>
+        <fx:include source="button.fxml" fx:id="includetest"/>
     </bottom>
 </BorderPane>

@@ -15,6 +15,7 @@ import javafx.scene.control.ChoiceBox;
 
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -46,6 +47,7 @@ public class Controller {
 
     @FXML
     void initialize() {
+
         loadButton.setOnAction(this::onClickLoadButton);
         goUpButton.setOnAction(this::onClickGoUpButton);
         changeNameButton.setOnAction(this::onClickChangeNameButton);
@@ -103,7 +105,7 @@ public class Controller {
 
         if(name != null ) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("name_window.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("fxml/name_window.fxml"));
                 Parent root = (Parent) fxmlLoader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
