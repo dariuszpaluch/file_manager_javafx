@@ -14,25 +14,19 @@
             xmlns:fx="http://javafx.com/fxml" stylesheets="@../resources/styles/main_layout.css">
     <top>
         <FlowPane>
-            <Button text="Load" fx:id="loadButton"/>
-            <Button text="Go up" fx:id="goUpButton"/>
             <Button text="Change name" fx:id="changeNameButton"/>
-            <Button text="Refresh" fx:id="refreshButton"/>
             <Button text="Delete" fx:id="deleteButton"/>
-            <ChoiceBox fx:id="currentDriveChoiceBox" />
-            <Text text="currentPath" fx:id="currentPathText"/>
         </FlowPane>
     </top>
     <center>
         <HBox spacing="10">
-            <FilesTableView fx:id="leftFilesTableView" HBox.hgrow="ALWAYS"/>
-            <FilesTableView fx:id="rightFilesTableView" HBox.hgrow="ALWAYS"/>
+            <fx:include source="files_browser.fxml" fx:id="leftFilesBrowser"/>
+            <fx:include source="files_browser.fxml" fx:id="rightFilesBrowser"/>
         </HBox>
     </center>
     <bottom>
-        <FlowPane orientation="HORIZONTAL" styleClass="footer">
+        <FlowPane styleClass="footer">
             <Text text="Copyright© Dariusz Paluch"/>
         </FlowPane>
-        <fx:include source="button.fxml" fx:id="includetest"/>
     </bottom>
 </BorderPane>

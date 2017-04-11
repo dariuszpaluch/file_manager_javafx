@@ -9,6 +9,8 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.*;
 import java.nio.file.attribute.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FileUtils {
 
@@ -38,5 +40,21 @@ public class FileUtils {
         attr += file.canExecute()? "x" : "-";
 
         return attr;
+    }
+
+    static public boolean isDir(Path path) {
+        return !(path == null || !Files.exists(path)) && Files.isDirectory(path);
+    }
+
+    static public List<String> getListOfDrivers() {
+        List<String> driverNames = new ArrayList<>();
+
+        File[] drivers  = new File(System.getProperty("user.dir")).listRoots();
+
+        for(File driver : drivers) {
+            driverNames.add(driver.getPath());
+        }
+
+        return driverNames;
     }
 }
