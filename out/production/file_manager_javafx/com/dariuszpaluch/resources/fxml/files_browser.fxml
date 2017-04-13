@@ -23,7 +23,7 @@
                 </ImageView>
             </graphic>
             <tooltip>
-                <Tooltip text="goUpDirTooltip" />
+                <Tooltip fx:id="goUpButtonTooltip" text="goUpDirTooltip" />
             </tooltip>
         </Button>
         <Button fx:id="refreshButton">
@@ -35,7 +35,7 @@
                 </ImageView>
             </graphic>
             <tooltip>
-                <Tooltip text="refresh" />
+                <Tooltip fx:id="refreshButtonTooltip" text="refresh" />
             </tooltip>
         </Button>
         <ChoiceBox fx:id="driveChoiceBox" />

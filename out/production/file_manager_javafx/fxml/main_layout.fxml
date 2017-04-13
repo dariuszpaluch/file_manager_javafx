@@ -10,7 +10,7 @@
 <BorderPane stylesheets="@/styles/main_layout.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dariuszpaluch.java.Controller">
     <top>
         <FlowPane>
-            <Button fx:id="changeLocation" text="EN" />
+            <Button fx:id="changeLanguageButton" text="EN" />
             <Button fx:id="changeNameButton" text="changeName" />
             <Button fx:id="deleteButton" text="delete" />
         </FlowPane>

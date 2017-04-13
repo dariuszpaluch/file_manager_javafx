@@ -24,6 +24,8 @@ public class FilesBrowserController {
     public Button goUpButton;
     public Button refreshButton;
     public ChoiceBox driveChoiceBox;
+    public Tooltip goUpButtonTooltip;
+    public Tooltip refreshButtonTooltip;
 
     private ObservableList<FileRow> filesRows = FXCollections.observableArrayList();
     private ObservableList<String> driversList = FXCollections.observableArrayList();
@@ -54,7 +56,9 @@ public class FilesBrowserController {
 
         this.currentPathText.textProperty().bind(this.currentPathStringProperty);
 
-
+        LanguageMechanics.addItem(goUpButtonTooltip, "goUpDirTooltip");
+        LanguageMechanics.addItem(refreshButtonTooltip, "refreshTooltip");
+        LanguageMechanics.updateAllItems();
         this.updateAll();
     }
 

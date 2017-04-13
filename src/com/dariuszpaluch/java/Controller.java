@@ -16,18 +16,19 @@ public class Controller {
     public FilesBrowserController leftFilesBrowserController;
     @FXML
     public FilesBrowserController rightFilesBrowserController;
-    public Button changeLocation;
+    public Button changeLanguageButton;
     public Text footerText;
 
     @FXML
     void initialize() {
         deleteButton.setOnAction(this::onClickDeleteButton);
-        this.changeLocation.setOnAction(this::onChangeLocationButtonClick);
+        this.changeLanguageButton.setOnAction(this::onChangeLocationButtonClick);
 
         LanguageMechanics.addItem(footerText, "copyright");
         LanguageMechanics.addItem(deleteButton, "delete");
         LanguageMechanics.addItem(changeNameButton, "changeName");
         LanguageMechanics.updateAllItems();
+        changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
     }
 
     private void onChangeLocationButtonClick(ActionEvent actionEvent) {
@@ -35,16 +36,14 @@ public class Controller {
     }
 
     private void onToogleLocation() {
-        System.out.println("CHANGE LOCATION");
-
-        System.out.println(LanguageMechanics.getLocale().toString());
-
         if(LanguageMechanics.getLocale().toString().equals("pl")) {
             LanguageMechanics.setLocale(new Locale("en"));
         }
         else {
             LanguageMechanics.setLocale(new Locale("pl"));
         }
+
+        changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
     }
 
     private void onClickDeleteButton(ActionEvent actionEvent) {

@@ -6,6 +6,7 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javax.tools.Tool;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -14,11 +15,11 @@ import java.util.Set;
 public class LanguageMechanics {
 
     private static class ViewItem {
-        Node node;
+        Object object;
         String bundleKey;
 
-        ViewItem(Node node, String bundleKey) {
-            this.node = node;
+        ViewItem(Object object, String bundleKey) {
+            this.object = object;
             this.bundleKey = bundleKey;
         }
     }
@@ -50,19 +51,22 @@ public class LanguageMechanics {
         updateAllItems();
     }
 
-    static public void addItem(Node node, String bundleKey) {
-        elementsWithSetText.add(new ViewItem(node, bundleKey));
+    static public void addItem(Object object, String bundleKey) {
+        elementsWithSetText.add(new ViewItem(object, bundleKey));
     }
 
     static public void updateAllItems() {
         ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages", locale);
 
         for(ViewItem item: elementsWithSetText) {
-            if(item.node instanceof Text) {
-                ((Text)item.node).setText(bundle.getString(item.bundleKey));
+            if(item.object instanceof Text) {
+                ((Text)item.object).setText(bundle.getString(item.bundleKey));
             }
-            else if(item.node instanceof  Button) {
-                ((Button)item.node).setText(bundle.getString(item.bundleKey));
+            else if(item.object instanceof  Button) {
+                ((Button)item.object).setText(bundle.getString(item.bundleKey));
+            }
+            else if(item.object instanceof  Tooltip) {
+                ((Tooltip)item.object).setText(bundle.getString(item.bundleKey));
             }
         }
 
