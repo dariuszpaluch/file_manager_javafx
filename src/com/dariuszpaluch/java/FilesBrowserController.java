@@ -54,6 +54,7 @@ public class FilesBrowserController {
 
         this.currentPathText.textProperty().bind(this.currentPathStringProperty);
 
+
         this.updateAll();
     }
 

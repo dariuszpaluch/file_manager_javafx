@@ -15,7 +15,7 @@
     <TextField fx:id="nameTextField" />
     <Text fx:id="errorText" />
     <FlowPane alignment="BASELINE_CENTER">
-        <Button fx:id="cancelButton" text="%cancel" />
-        <Button fx:id="saveButton" text="%save" />
+        <Button fx:id="cancelButton" text="cancel" />
+        <Button fx:id="saveButton" text="save" />
     </FlowPane>
 </FlowPane>

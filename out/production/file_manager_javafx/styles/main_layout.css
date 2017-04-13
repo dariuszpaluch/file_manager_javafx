@@ -1,4 +1,5 @@
 .root {
+    -fx-padding: 10px;
 }
 .button {
     -fx-padding: 10px;

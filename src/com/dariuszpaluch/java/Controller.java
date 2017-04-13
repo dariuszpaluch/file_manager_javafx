@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 
 import java.util.Locale;
 
@@ -16,13 +17,17 @@ public class Controller {
     @FXML
     public FilesBrowserController rightFilesBrowserController;
     public Button changeLocation;
-
-    String location = "pl";
+    public Text footerText;
 
     @FXML
     void initialize() {
         deleteButton.setOnAction(this::onClickDeleteButton);
         this.changeLocation.setOnAction(this::onChangeLocationButtonClick);
+
+        LanguageMechanics.addItem(footerText, "copyright");
+        LanguageMechanics.addItem(deleteButton, "delete");
+        LanguageMechanics.addItem(changeNameButton, "changeName");
+        LanguageMechanics.updateAllItems();
     }
 
     private void onChangeLocationButtonClick(ActionEvent actionEvent) {
@@ -32,15 +37,13 @@ public class Controller {
     private void onToogleLocation() {
         System.out.println("CHANGE LOCATION");
 
-        if(location == "pl") {
-            Locale.setDefault(new Locale("en"));
+        System.out.println(LanguageMechanics.getLocale().toString());
 
-            this.location="en";
+        if(LanguageMechanics.getLocale().toString().equals("pl")) {
+            LanguageMechanics.setLocale(new Locale("en"));
         }
         else {
-            Locale.setDefault(new Locale("pl"));
-            this.location="pl";
-
+            LanguageMechanics.setLocale(new Locale("pl"));
         }
     }
 

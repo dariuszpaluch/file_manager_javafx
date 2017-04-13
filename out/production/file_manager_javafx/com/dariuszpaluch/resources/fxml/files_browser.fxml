@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
 <?import com.dariuszpaluch.java.FilesTableView?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<VBox xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.dariuszpaluch.java.FilesBrowserController"
-      stylesheets="@/styles/files_browser.css">
+<VBox stylesheets="@/styles/files_browser.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dariuszpaluch.java.FilesBrowserController">
 
     <FlowPane>
         <Button fx:id="goUpButton">
             <graphic>
                 <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
                     <image>
-                        <Image url="@/images/arrow_up.png"/>
+                        <Image url="@/images/arrow_up.png" />
                     </image>
                 </ImageView>
             </graphic>
             <tooltip>
-                <Tooltip text="%goUpDirTooltip"/>
+                <Tooltip text="goUpDirTooltip" />
             </tooltip>
         </Button>
         <Button fx:id="refreshButton">
             <graphic>
                 <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
                     <image>
-                        <Image url="@/images/refresh.png"/>
+                        <Image url="@/images/refresh.png" />
                     </image>
                 </ImageView>
             </graphic>
             <tooltip>
-                <Tooltip text="%refresh"/>
+                <Tooltip text="refresh" />
             </tooltip>
         </Button>
         <ChoiceBox fx:id="driveChoiceBox" />
     </FlowPane>
-    <Text text="currentPath" fx:id="currentPathText"/>
+    <Text fx:id="currentPathText" text="currentPath" />
 
-    <FilesTableView fx:id="filesTableView" HBox.hgrow="ALWAYS"/>
+    <FilesTableView fx:id="filesTableView" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
 
 </VBox>

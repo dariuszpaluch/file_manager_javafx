@@ -6,3 +6,7 @@
     /*-fx-background-image: url("../resources/images/arrow_up.png");*/
 
 /*}*/
+
+.root {
+    -fx-padding: 10px;
+}

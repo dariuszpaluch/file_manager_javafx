@@ -21,10 +21,11 @@ public class Main extends Application {
         Locale.setDefault(new Locale("pl"));
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/fxml/main_layout.fxml"));
-        ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages");
-        loader.setResources(bundle);
-        primaryStage.setTitle(bundle.getString("applicationName"));
-
+//        ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages");
+//        loader.setResources(bundle);
+//        primaryStage.setTitle(bundle.getString("applicationName"));
+//        LanguageMechanics.setBundle(bundle);
+        LanguageMechanics.setState(primaryStage, "applicationName");
         Parent stackPane = loader.load();
 
         Scene scene = new Scene(stackPane, 1000, 500);
