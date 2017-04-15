@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.stream.Collectors;
 
 public class FilesBrowserController {
     public FilesTableView filesTableView;
@@ -135,6 +136,10 @@ public class FilesBrowserController {
             }
         }
 
+    }
+
+    public Path getSelectedPaths() {
+        return ((FileRow)this.filesTableView.getSelectionModel().getSelectedItem()).getPath();
     }
 
 

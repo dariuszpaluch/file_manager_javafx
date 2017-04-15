@@ -11,7 +11,7 @@ public class FileRow {
     private final String size;
     private final String date;
     private final String attr;
-
+    private final Path path;
 
     public FileRow(File file) {
         Path path = Paths.get(file.getPath());
@@ -22,20 +22,24 @@ public class FileRow {
         String date = DateUtils.getStringDateWithTime(file.lastModified());
         String attr = FileUtils.getPermissionsToString(file);
 
+
         this.name = name;
         this.ext = ext;
         this.size = size;
         this.date = date;
         this.attr = attr;
+        this.path = path;
     }
 
 
-    public FileRow(String name, String ext, String path, String size, String date, String attr) {
+    public FileRow(String name, String ext, Path path, String size, String date, String attr) {
         this.name = name;
         this.ext = ext;
         this.size = size;
         this.date = date;
         this.attr = attr;
+        this.path = path;
+
     }
 
     public String getName() {
@@ -56,5 +60,9 @@ public class FileRow {
 
     public String getAttr() {
         return attr;
+    }
+
+    public Path getPath() {
+        return path;
     }
 }

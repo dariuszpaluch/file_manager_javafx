@@ -6,6 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Locale;
 
 public class Controller {
@@ -47,7 +50,14 @@ public class Controller {
     }
 
     private void onClickDeleteButton(ActionEvent actionEvent) {
-//        String name = leftFilesListView.getSelectionModel().getSelectedItem();
+        Path path = leftFilesBrowserController.getSelectedPaths();
+
+        FileUtils.DeleteDirVisitor ddv = new FileUtils.DeleteDirVisitor();
+        try {
+            Files.walkFileTree(path, ddv);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 //        File selectedFile = new File(this.currentPath + File.separator + name);
 //        selectedFile.delete();
 //        readAllFilesInFolder(this.currentPath);
