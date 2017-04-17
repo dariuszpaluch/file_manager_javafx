@@ -28,6 +28,9 @@ public class OperationProgressController extends FlowPane {
 
     public OperationProgressController(Path path)  {
         super();
+        getSizeTreeTheadTask = new GetSizeTreeTheadTask(path);
+        operationFilesSize = getSizeTreeTheadTask.getObsTotalSize();
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/operation_progress.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -36,17 +39,16 @@ public class OperationProgressController extends FlowPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-        getSizeTreeTheadTask = new GetSizeTreeTheadTask(path);
-        operationFilesSize = getSizeTreeTheadTask.getObsTotalSize();
-//        progressPropertyWrapper = Bindings.divide(operationFilesSize, filesSizeDone);
-
     }
     @FXML
     void initialize() {
+//        System.out.println("INITIALIZE");
+
 ////        progressPropertyWrapper.set();
-//        progressBar.setProgress(-1.0); //to show prepare loading
-//        progressIndicator.setProgress(-1.0);
-//        totalSizeText.textProperty().bind(operationFilesSize.asString());
+        progressBar.setProgress(-1.0); //to show prepare loading
+        progressIndicator.setProgress(-1.0);
+        totalSizeText.textProperty().bind(operationFilesSize.asString());
+        new Thread(getSizeTreeTheadTask).start();
 ////        progressBar.
     }
 

@@ -19,7 +19,7 @@ public class GetSizeDirVisitor extends SimpleFileVisitor<Path> {
     private long i = 0;
 
     public ReadOnlyLongProperty getObsTotalSize() {
-        return obsTotalSizeWrapper.getReadOnlyProperty();
+        return obsTotalSize;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class GetSizeDirVisitor extends SimpleFileVisitor<Path> {
         Long fileSize = Files.size(path);
         totalSize += Files.size(path);
         i+=1;
-        if(i > 100) {
+        if(i > 500) {
             i = 0;
             obsTotalSizeWrapper.set(totalSize);
 
