@@ -1,9 +1,21 @@
 package com.dariuszpaluch.java;
 
+import com.dariuszpaluch.java.utils.DirUtils;
+import com.dariuszpaluch.java.utils.visitor.GetSizeDirVisitor;
+import javafx.beans.property.*;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -21,6 +33,9 @@ public class Controller {
     public FilesBrowserController rightFilesBrowserController;
     public Button changeLanguageButton;
     public Text footerText;
+    public ProgressBar deleteProgressBar;
+    public Text sizeText;
+    public FlowPane operationFlowPane;
 
     @FXML
     void initialize() {
@@ -49,18 +64,70 @@ public class Controller {
         changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
     }
 
+    public class GetSizeTheadTask extends Task {
+        private double totalSize = 0.0;
+        private Path path;
+        private ReadOnlyLongProperty obsTotalSize;
+        private GetSizeDirVisitor visitor = new GetSizeDirVisitor();
+
+        public GetSizeTheadTask(Path path) {
+            this.path = path;
+            obsTotalSize = visitor.getObsTotalSize();
+        }
+
+        public double getTotalSize() {
+            return totalSize;
+        }
+
+        public ReadOnlyLongProperty getObsTotalSize() {
+            return obsTotalSize;
+        }
+
+        @Override
+        protected Object call() throws Exception {
+            Files.walkFileTree(path, visitor);
+            return visitor.getTotalSize();
+//            DirUtils.getTotalSize(this.path);
+        }
+    }
+
+
     private void onClickDeleteButton(ActionEvent actionEvent) {
         Path path = leftFilesBrowserController.getSelectedPaths();
+//        try {
+//            Pane pane = FXMLLoader.load(getClass().getResource("../resources/fxml/operation_progress.fxml"));
+//            operationFlowPane.getChildren().add(pane);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        };
 
-        FileUtils.DeleteDirVisitor ddv = new FileUtils.DeleteDirVisitor();
-        try {
-            Files.walkFileTree(path, ddv);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-//        File selectedFile = new File(this.currentPath + File.separator + name);
-//        selectedFile.delete();
-//        readAllFilesInFolder(this.currentPath);
+//        operationFlowPane.getChildren().add(new Button ("DAREK"));
+        operationFlowPane.getChildren().add(new OperationProgressController(path));
+//        try {
+//            DirUtils.deleteIfExists(path);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        GetSizeTheadTask task = new GetSizeTheadTask(path); //1
+////        GetSizeDirVisitor visitor = new GetSizeDirVisitor(path);
+//        sizeText.textProperty().bind(task.getObsTotalSize().asString() );
+//        task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+//            @Override
+//            public void handle(WorkerStateEvent t) {
+//                System.out.println("FINISH");
+//                System.out.println(Long.toString((Long)task.getValue()));
+//            }
+//        });
+//        new Thread(task).start(); //2
+
+
+
+//        try {
+//            System.out.println(DirUtils.getTotalSize(path));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
 //    private void onClickChangeNameButton(ActionEvent actionEvent) {
