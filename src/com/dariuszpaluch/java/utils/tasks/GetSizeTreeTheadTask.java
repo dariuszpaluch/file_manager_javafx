@@ -9,7 +9,6 @@ import java.nio.file.Path;
 
 public class GetSizeTreeTheadTask extends Task {
     private Path path;
-    private double totalSize;
     private ReadOnlyLongProperty obsTotalSize;
     private GetSizeDirVisitor visitor = new GetSizeDirVisitor();
 

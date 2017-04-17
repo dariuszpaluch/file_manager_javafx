@@ -27,7 +27,7 @@ public class GetSizeDirVisitor extends SimpleFileVisitor<Path> {
         Long fileSize = Files.size(path);
         totalSize += Files.size(path);
         i+=1;
-        if(i > 500) {
+        if(i > 100) {
             i = 0;
             obsTotalSizeWrapper.set(totalSize);
 
