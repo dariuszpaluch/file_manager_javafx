@@ -1,5 +1,6 @@
 package com.dariuszpaluch.java.utils.visitor;
 
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyLongProperty;
 import javafx.beans.property.ReadOnlyLongWrapper;
 
@@ -26,25 +27,32 @@ public class DeleteDirVisitor extends SimpleFileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
-        System.out.println("TUTAJ 2" + path);
-
-        i +=1;
-            System.out.println("i" + i);
-        if(i > 100) {
-            obsDeletedFilesSizeWrapper.set(deletedFilesSize);
-            i = 0;
-        }
         deletedFilesSize += Files.size(path);
 
-        Files.delete(path);
+        Platform.runLater(() -> {
+            obsDeletedFilesSizeWrapper.set(deletedFilesSize);
+        });
+        try {
+            Files.delete(path);
+        }
+        catch(Exception e) {
+            System.out.println("ERRROR");
+            System.out.println(e.getMessage());
+        }
         return FileVisitResult.CONTINUE;
     }
 
     @Override
     public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
-        System.out.println("TUTAJ" + dir);
         if(exc == null){
-            Files.delete(dir);
+            try {
+                Files.delete(dir);
+            }
+            catch(Exception e) {
+                System.out.println("ERRROR");
+
+                System.out.println(e.getMessage());
+            }
             return FileVisitResult.CONTINUE;
         }
         throw exc;

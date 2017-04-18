@@ -52,6 +52,13 @@ public class OperationProgressController extends FlowPane {
                 onGetTotalSizeSuccess();
             }
         });
+
+        deleteTreeTheadTask.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                onDeleteSuccess();
+            }
+        });
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/operation_progress.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -62,15 +69,18 @@ public class OperationProgressController extends FlowPane {
         }
     }
 
+
+
     private static NumberBinding calculateProgress(final ObservableLongValue totalSize, final ObservableLongValue progressSize) {
         return new DoubleBinding() {
             {
-                bind(totalSize, progressSize);
+                super.bind(totalSize, progressSize);
             }
             @Override protected double computeValue() {
-                System.out.println(Double.toString(totalSize.doubleValue()));
-                System.out.println(Double.toString(progressSize.doubleValue()));
+//                System.out.println(Double.toString(totalSize.doubleValue()));
+//                System.out.println(Double.toString(progressSize.doubleValue()));
                 if(totalSize.doubleValue() > 0 && progressSize.doubleValue() > 0) {
+//                    System.out.println("wynik" + Double.toString(progressSize.doubleValue() / totalSize.doubleValue()));
                  return progressSize.doubleValue() / totalSize.doubleValue();
                 }
 
@@ -80,8 +90,6 @@ public class OperationProgressController extends FlowPane {
     }
     @FXML
     void initialize() {
-        System.out.println("INITIALIZE");
-
 ////        progressPropertyWrapper.set();
         progressBar.setProgress(-1.0); //to show prepare loading
         progressIndicator.setProgress(-1.0);
@@ -92,11 +100,16 @@ public class OperationProgressController extends FlowPane {
     }
 
     private void onGetTotalSizeSuccess() {
-        System.out.println("SUCCESS");
-        Long result = (Long)getSizeTreeTheadTask.getValue();
         new Thread(deleteTreeTheadTask).start();
+        Long result = (Long)getSizeTreeTheadTask.getValue();
         progressBar.progressProperty().bind(calculateProgress(operationFilesSize, deletedFilesSize));
         progressIndicator.progressProperty().bind(calculateProgress(operationFilesSize, deletedFilesSize));
+
+        totalSizeText.textProperty().bind(calculateProgress(operationFilesSize, deletedFilesSize).asString());
+    }
+
+    private void onDeleteSuccess() {
+        System.out.println(Long.toString((Long)deleteTreeTheadTask.getValue()));
     }
 
 //    private void start() {
