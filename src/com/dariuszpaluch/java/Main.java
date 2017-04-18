@@ -29,7 +29,10 @@ public class Main extends Application {
         Parent stackPane = loader.load();
 
         Scene scene = new Scene(stackPane, 1000, 500);
-//        scene.getStylesheets().add(getClass().getResource("resources/main_layout.css").toExternalForm());
+//        String css = class.getResource("/jarcss.css").toExternalForm();
+        scene.getStylesheets().clear();
+//        scene.getStylesheets().add(css);
+        scene.getStylesheets().add(getClass().getResource("/styles/theme.css").toExternalForm());
 
         primaryStage.setResizable(true);
         primaryStage.setScene(scene);

@@ -52,22 +52,31 @@ public class LanguageMechanics {
     }
 
     static public void addItem(Object object, String bundleKey) {
-        elementsWithSetText.add(new ViewItem(object, bundleKey));
+        ViewItem item = new ViewItem(object, bundleKey);
+
+        setText(item);
+        elementsWithSetText.add(item);
+    }
+
+    static private void setText(ViewItem item) {
+        ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages", locale);
+
+        if(item.object instanceof Text) {
+            ((Text)item.object).setText(bundle.getString(item.bundleKey));
+        }
+        else if(item.object instanceof  Button) {
+            ((Button)item.object).setText(bundle.getString(item.bundleKey));
+        }
+        else if(item.object instanceof  Tooltip) {
+            ((Tooltip)item.object).setText(bundle.getString(item.bundleKey));
+        }
     }
 
     static public void updateAllItems() {
         ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages", locale);
 
         for(ViewItem item: elementsWithSetText) {
-            if(item.object instanceof Text) {
-                ((Text)item.object).setText(bundle.getString(item.bundleKey));
-            }
-            else if(item.object instanceof  Button) {
-                ((Button)item.object).setText(bundle.getString(item.bundleKey));
-            }
-            else if(item.object instanceof  Tooltip) {
-                ((Tooltip)item.object).setText(bundle.getString(item.bundleKey));
-            }
+           setText(item);
         }
 
         stageItem.stage.setTitle(bundle.getString(stageItem.bundleKey));

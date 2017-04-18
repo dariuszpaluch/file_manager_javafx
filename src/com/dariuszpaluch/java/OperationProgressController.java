@@ -2,13 +2,10 @@ package com.dariuszpaluch.java;
 
 import com.dariuszpaluch.java.utils.tasks.DeleteTreeTheadTask;
 import com.dariuszpaluch.java.utils.tasks.GetSizeTreeTheadTask;
-import javafx.beans.binding.Bindings;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.binding.NumberBinding;
 import javafx.beans.property.ReadOnlyDoubleProperty;
-import javafx.beans.property.ReadOnlyDoubleWrapper;
 import javafx.beans.property.ReadOnlyLongProperty;
-import javafx.beans.property.ReadOnlyLongWrapper;
 import javafx.beans.value.ObservableLongValue;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
@@ -24,10 +21,15 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 public class OperationProgressController extends FlowPane {
+    private Path path;
     public ProgressBar progressBar;
     public ProgressIndicator progressIndicator;
     public Button cancelButton;
     public Text totalSizeText;
+    public Text removingFilesText;
+    public Text removingPathText;
+    public Text sizeTitleText;
+    public Text sizeText;
 
     private ReadOnlyLongProperty operationFilesSize;
     private ReadOnlyDoubleProperty obsProgressProperty;
@@ -36,8 +38,8 @@ public class OperationProgressController extends FlowPane {
     private GetSizeTreeTheadTask getSizeTreeTheadTask;
     private DeleteTreeTheadTask deleteTreeTheadTask;
 
-    public OperationProgressController(Path path)  {
-        super();
+    public OperationProgressController(Path path){
+        this.path = path;
         getSizeTreeTheadTask = new GetSizeTreeTheadTask(path);
         operationFilesSize = getSizeTreeTheadTask.getObsTotalSize();
         deleteTreeTheadTask = new DeleteTreeTheadTask(path);
@@ -90,6 +92,12 @@ public class OperationProgressController extends FlowPane {
     }
     @FXML
     void initialize() {
+        LanguageMechanics.addItem(cancelButton, "cancel");
+//        removingFilesText
+        LanguageMechanics.addItem(removingFilesText, "deleting");
+        LanguageMechanics.addItem(sizeTitleText, "size");
+
+        removingPathText.setText(this.path.toString());
 ////        progressPropertyWrapper.set();
         progressBar.setProgress(-1.0); //to show prepare loading
         progressIndicator.setProgress(-1.0);
@@ -102,6 +110,9 @@ public class OperationProgressController extends FlowPane {
     private void onGetTotalSizeSuccess() {
         new Thread(deleteTreeTheadTask).start();
         Long result = (Long)getSizeTreeTheadTask.getValue();
+
+        sizeText.setText(Long.toString(result));
+
         progressBar.progressProperty().bind(calculateProgress(operationFilesSize, deletedFilesSize));
         progressIndicator.progressProperty().bind(calculateProgress(operationFilesSize, deletedFilesSize));
 

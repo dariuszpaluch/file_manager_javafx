@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.control.ProgressBar?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
 <?import javafx.scene.control.ProgressIndicator?>
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.text.Text?>
-<fx:root
-    type="javafx.scene.layout.FlowPane"
-    xmlns:fx="http://javafx.com/fxml">
-    <FlowPane>
-        <ProgressBar fx:id="progressBar" />
-        <ProgressIndicator fx:id="progressIndicator"/>
-    </FlowPane>
-    <FlowPane>
-        <Text fx:id="totalSizeText" />
-        <Button fx:id="cancelButton"/>
 
+<fx:root type="javafx.scene.layout.FlowPane" xmlns:fx="http://javafx.com/fxml/1"
+         xmlns="http://javafx.com/javafx/8.0.111">
+
+  <FlowPane orientation="VERTICAL">
+    <Text text="removingFilesText" fx:id="removingFilesText"/>
+    <Text text="removingPathText" fx:id="removingPathText"/>
+
+    <FlowPane>
+      <Text text="sizeTitleText" fx:id="sizeTitleText"/>
+      <Text text="sizeText" fx:id="sizeText"/>
     </FlowPane>
+  </FlowPane>
+
+  <FlowPane>
+    <JFXProgressBar fx:id="progressBar"/>
+    <ProgressIndicator fx:id="progressIndicator" prefHeight="25"/>
+  </FlowPane>
+
+  <FlowPane>
+    <Text fx:id="totalSizeText"/>
+    <JFXButton styleClass="button-raised, cancel-button" fx:id="cancelButton" text="cancel"/>
+  </FlowPane>
 </fx:root>
