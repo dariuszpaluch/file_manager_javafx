@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="file_manager_javafx:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/file_manager_javafx_jar</output-path>
+    <root id="archive" name="file_manager_javafx.jar">
+      <element id="module-output" name="file_manager_javafx" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/jfoenix.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

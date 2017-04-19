@@ -94,40 +94,8 @@ public class Controller {
 
     private void onClickDeleteButton(ActionEvent actionEvent) {
         Path path = leftFilesBrowserController.getSelectedPaths();
-//        try {
-//            Pane pane = FXMLLoader.load(getClass().getResource("../resources/fxml/operation_progress.fxml"));
-//            operationFlowPane.getChildren().add(pane);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        };
 
-//        operationFlowPane.getChildren().add(new Button ("DAREK"));
         operationFlowPane.getChildren().add(new OperationProgressController(path));
-//        try {
-//            DirUtils.deleteIfExists(path);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        GetSizeTheadTask task = new GetSizeTheadTask(path); //1
-////        GetSizeDirVisitor visitor = new GetSizeDirVisitor(path);
-//        sizeText.textProperty().bind(task.getObsTotalSize().asString() );
-//        task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-//            @Override
-//            public void handle(WorkerStateEvent t) {
-//                System.out.println("FINISH");
-//                System.out.println(Long.toString((Long)task.getValue()));
-//            }
-//        });
-//        new Thread(task).start(); //2
-
-
-
-//        try {
-//            System.out.println(DirUtils.getTotalSize(path));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
     }
 
 //    private void onClickChangeNameButton(ActionEvent actionEvent) {

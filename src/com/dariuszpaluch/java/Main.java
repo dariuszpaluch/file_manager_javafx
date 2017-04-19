@@ -21,18 +21,12 @@ public class Main extends Application {
         Locale.setDefault(new Locale("pl"));
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/fxml/main_layout.fxml"));
-//        ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages");
-//        loader.setResources(bundle);
-//        primaryStage.setTitle(bundle.getString("applicationName"));
-//        LanguageMechanics.setBundle(bundle);
         LanguageMechanics.setState(primaryStage, "applicationName");
         Parent stackPane = loader.load();
 
         Scene scene = new Scene(stackPane, 1000, 500);
-//        String css = class.getResource("/jarcss.css").toExternalForm();
         scene.getStylesheets().clear();
-//        scene.getStylesheets().add(css);
-        scene.getStylesheets().add(getClass().getResource("/styles/theme.css").toExternalForm());
+//        scene.getStylesheets().add(getClass().getResource("/styles/theme.css").toExternalForm());
 
         primaryStage.setResizable(true);
         primaryStage.setScene(scene);

@@ -4,15 +4,12 @@ import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyLongProperty;
 import javafx.beans.property.ReadOnlyLongWrapper;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.SimpleFileVisitor;
+import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 
 public class DeleteDirVisitor extends SimpleFileVisitor<Path> {
-    private int i = 0;
     private long deletedFilesSize = 0;
     private ReadOnlyLongWrapper obsDeletedFilesSizeWrapper = new ReadOnlyLongWrapper(0);
     private ReadOnlyLongProperty obsDeletedFilesSize = obsDeletedFilesSizeWrapper.getReadOnlyProperty();
@@ -27,18 +24,25 @@ public class DeleteDirVisitor extends SimpleFileVisitor<Path> {
 
     @Override
     public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
+        final File currentFile = path.toFile();
+        currentFile.delete();
+
         deletedFilesSize += Files.size(path);
 
         Platform.runLater(() -> {
             obsDeletedFilesSizeWrapper.set(deletedFilesSize);
         });
-        try {
-            Files.delete(path);
-        }
-        catch(Exception e) {
-            System.out.println("ERRROR");
-            System.out.println(e.getMessage());
-        }
+
+//        try {
+//            Files.delete(path);
+//        } catch (NoSuchFileException x) {
+//            System.err.format("%s: no such" + " file or directory%n", path);
+//        } catch (DirectoryNotEmptyException x) {
+//            System.err.format("%s not empty%n", path);
+//        } catch (IOException x) {
+//            // File permission problems are caught here.
+//            System.err.println(x);
+//        }
         return FileVisitResult.CONTINUE;
     }
 

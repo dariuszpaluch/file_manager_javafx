@@ -23,7 +23,7 @@ import java.nio.file.Path;
 public class OperationProgressController extends FlowPane {
     private Path path;
     public ProgressBar progressBar;
-    public ProgressIndicator progressIndicator;
+//    public ProgressIndicator progressIndicator;
     public Button cancelButton;
     public Text totalSizeText;
     public Text removingFilesText;
@@ -79,10 +79,7 @@ public class OperationProgressController extends FlowPane {
                 super.bind(totalSize, progressSize);
             }
             @Override protected double computeValue() {
-//                System.out.println(Double.toString(totalSize.doubleValue()));
-//                System.out.println(Double.toString(progressSize.doubleValue()));
                 if(totalSize.doubleValue() > 0 && progressSize.doubleValue() > 0) {
-//                    System.out.println("wynik" + Double.toString(progressSize.doubleValue() / totalSize.doubleValue()));
                  return progressSize.doubleValue() / totalSize.doubleValue();
                 }
 
@@ -93,18 +90,15 @@ public class OperationProgressController extends FlowPane {
     @FXML
     void initialize() {
         LanguageMechanics.addItem(cancelButton, "cancel");
-//        removingFilesText
         LanguageMechanics.addItem(removingFilesText, "deleting");
         LanguageMechanics.addItem(sizeTitleText, "size");
 
         removingPathText.setText(this.path.toString());
-////        progressPropertyWrapper.set();
         progressBar.setProgress(-1.0); //to show prepare loading
-        progressIndicator.setProgress(-1.0);
+//        progressIndicator.setProgress(-1.0);
         totalSizeText.textProperty().bind(operationFilesSize.asString());
-//        getSize
-        new Thread(getSizeTreeTheadTask).start();
-////        progressBar.
+
+//        new Thread(getSizeTreeTheadTask).start();
     }
 
     private void onGetTotalSizeSuccess() {
@@ -114,7 +108,7 @@ public class OperationProgressController extends FlowPane {
         sizeText.setText(Long.toString(result));
 
         progressBar.progressProperty().bind(calculateProgress(operationFilesSize, deletedFilesSize));
-        progressIndicator.progressProperty().bind(calculateProgress(operationFilesSize, deletedFilesSize));
+//        progressIndicator.progressProperty().bind(calculateProgress(operationFilesSize, deletedFilesSize));
 
         totalSizeText.textProperty().bind(calculateProgress(operationFilesSize, deletedFilesSize).asString());
     }
