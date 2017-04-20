@@ -18,17 +18,13 @@
             <FlowPane.margin>
                <Insets right="10.0" />
             </FlowPane.margin></Text>
-      <Text fx:id="sizeText" text="sizeText" />
+      <Text fx:id="totalSizeText" text="totalSizeText" />
     </FlowPane>
   </FlowPane>
 
-  <FlowPane>
-    <ProgressBar fx:id="progressBar" />
-    <ProgressIndicator fx:id="progressIndicator" prefHeight="25" />
-  </FlowPane>
+  <ProgressBar fx:id="progressBar" />
 
   <FlowPane>
-    <Text fx:id="totalSizeText" />
     <Button fx:id="cancelButton" text="cancel" />
   </FlowPane>
 </fx:root>

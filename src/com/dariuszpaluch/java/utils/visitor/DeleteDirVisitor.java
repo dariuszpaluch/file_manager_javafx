@@ -10,30 +10,20 @@ import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 
 public class DeleteDirVisitor extends MySimpleFileVisitor {
-    private long deletedFilesSize = 0;
-    private ReadOnlyLongWrapper obsDeletedFilesSizeWrapper = new ReadOnlyLongWrapper(0);
-    private ReadOnlyLongProperty obsDeletedFilesSize = obsDeletedFilesSizeWrapper.getReadOnlyProperty();
-
-    @Override
-    public long getProcessedFilesSize() {
-        return deletedFilesSize;
-    }
-
-    @Override
-    public ReadOnlyLongProperty getObsProcessedFilesSize() {
-        return obsDeletedFilesSize;
-    }
 
     @Override
     public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
-        final File currentFile = path.toFile();
-        currentFile.delete();
+        long fileSize = Files.size(path);
 
-        deletedFilesSize += Files.size(path);
-
-        Platform.runLater(() -> {
-            obsDeletedFilesSizeWrapper.set(deletedFilesSize);
-        });
+        try {
+            final File currentFile = path.toFile();
+            currentFile.delete();
+        }catch(Exception e) {
+            System.out.println("Error: DeleteDirVisitor -> postVisitDirectory");
+            System.out.println("ERROR" + e.getMessage());
+        }finally {
+            this.addProcessedFile(fileSize);
+        }
 
 //        try {
 //            Files.delete(path);
@@ -55,9 +45,11 @@ public class DeleteDirVisitor extends MySimpleFileVisitor {
                 Files.delete(dir);
             }
             catch(Exception e) {
-                System.out.println("ERRROR");
-
+                System.out.println("Error: DeleteDirVisitor -> postVisitDirectory");
                 System.out.println(e.getMessage());
+            }
+            finally {
+                this.addProcessedDir();
             }
             return FileVisitResult.CONTINUE;
         }

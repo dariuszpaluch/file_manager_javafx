@@ -1,6 +1,7 @@
 package com.dariuszpaluch.java;
 
 import com.dariuszpaluch.java.utils.DirUtils;
+import com.dariuszpaluch.java.utils.visitor.DeleteDirVisitor;
 import com.dariuszpaluch.java.utils.visitor.GetSizeDirVisitor;
 import javafx.beans.property.*;
 import javafx.beans.value.ObservableValue;
@@ -82,7 +83,7 @@ public class Controller {
     private void onClickDeleteButton(ActionEvent actionEvent) {
         Path path = leftFilesBrowserController.getSelectedPaths();
 
-        operationFlowPane.getChildren().add(new OperationProgressController(path));
+        operationFlowPane.getChildren().add(new OperationProgressController(path, new DeleteDirVisitor()));
     }
 
     private void onClickPasteButton(ActionEvent actionEvent) {

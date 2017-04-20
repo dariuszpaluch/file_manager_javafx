@@ -22,10 +22,7 @@
     </FlowPane>
   </FlowPane>
 
-  <FlowPane>
-    <ProgressBar fx:id="progressBar" />
-    <ProgressIndicator fx:id="progressIndicator" prefHeight="25" />
-  </FlowPane>
+  <ProgressBar fx:id="progressBar" />
 
   <FlowPane>
     <Button fx:id="cancelButton" text="cancel" />

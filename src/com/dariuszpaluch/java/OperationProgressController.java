@@ -39,12 +39,13 @@ public class OperationProgressController extends FlowPane {
     public OperationProgressController(Path path, MySimpleFileVisitor operationSimpleFileVisitor) {
         this.path = path;
 
-        this.getSizeTreeTheadTask = new WalkFileTreeTheadTask(this.path, new GetSizeDirVisitor());
-        this.operationFilesSize = getSizeTreeTheadTask.getObsProcessedFilesSize();
+        MySimpleFileVisitor getSizeDirVisitor = new GetSizeDirVisitor();
+        this.getSizeTreeTheadTask = new WalkFileTreeTheadTask(this.path, getSizeDirVisitor);
+        this.operationFilesSize = getSizeDirVisitor.getProcessedFilesSizeProperty();
         this.operationSimpleFileVisitor = operationSimpleFileVisitor;
         this.operationTreeTheadTask = new WalkFileTreeTheadTask(this.path, operationSimpleFileVisitor);
 
-        this.processedFilesSizeProperty = this.operationSimpleFileVisitor.getObsProcessedFilesSize();
+        this.processedFilesSizeProperty = this.operationSimpleFileVisitor.getProcessedFilesSizeProperty();
 
         getSizeTreeTheadTask.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
             @Override
@@ -100,13 +101,14 @@ public class OperationProgressController extends FlowPane {
     }
     private void onGetTotalSizeSuccess() {
         new Thread(this.operationTreeTheadTask).start();
-        Long result = (Long) getSizeTreeTheadTask.getValue();
-        totalSizeText.setText(Long.toString(result));
+//        Long result = (Long) getSizeTreeTheadTask.getValue();
+//        totalSizeText.setText(Long.toString(result));
 
         progressBar.progressProperty().bind(calculateProgress(this.operationFilesSize, this.processedFilesSizeProperty));
     }
 
     private void onOperationSuccess() {
+        cancelButton.setVisible(false);
 //        System.out.println(Long.toString((Long) deleteTreeTheadTask.getValue()));
     }
 
