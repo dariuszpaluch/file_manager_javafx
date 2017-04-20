@@ -8,26 +8,28 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.scene.control.ProgressBar?>
-<BorderPane stylesheets="@/styles/main_layout.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dariuszpaluch.java.Controller">
+<BorderPane stylesheets="@/styles/main_layout.css" xmlns="http://javafx.com/javafx/8.0.112"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dariuszpaluch.java.Controller">
     <top>
         <FlowPane>
-            <Button fx:id="changeLanguageButton" text="EN" />
-            <Button fx:id="changeNameButton" text="changeName" />
-            <Button fx:id="deleteButton" text="delete" />
-            <ProgressBar fx:id="deleteProgressBar"/>
-            <Text fx:id="sizeText" />
+            <Button fx:id="changeLanguageButton" text="EN"/>
+            <Button fx:id="changeNameButton" text="changeName"/>
+            <Button fx:id="deleteButton" text="delete"/>
+            <Button fx:id="copyButton" text="copy"/>
+            <Button fx:id="cutButton" text="cut"/>
+            <Button fx:id="pasteButton" text="paste"/>
         </FlowPane>
     </top>
     <center>
         <HBox spacing="10" VBox.vgrow="ALWAYS">
-            <fx:include fx:id="leftFilesBrowser" source="files_browser.fxml" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
-            <fx:include fx:id="rightFilesBrowser" source="files_browser.fxml" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS" />
+            <fx:include fx:id="leftFilesBrowser" source="files_browser.fxml" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS"/>
+            <fx:include fx:id="rightFilesBrowser" source="files_browser.fxml" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS"/>
             <FlowPane fx:id="operationFlowPane"/>
         </HBox>
     </center>
     <bottom>
         <FlowPane styleClass="footer">
-            <Text fx:id="footerText" text="copyright" />
+            <Text fx:id="footerText" text="copyright"/>
         </FlowPane>
     </bottom>
 </BorderPane>

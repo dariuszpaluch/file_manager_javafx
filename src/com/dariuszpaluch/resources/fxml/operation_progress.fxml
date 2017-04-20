@@ -18,7 +18,7 @@
             <FlowPane.margin>
                <Insets right="10.0" />
             </FlowPane.margin></Text>
-      <Text fx:id="sizeText" text="sizeText" />
+      <Text fx:id="totalSizeText" text="totalSizeText" />
     </FlowPane>
   </FlowPane>
 
@@ -28,7 +28,6 @@
   </FlowPane>
 
   <FlowPane>
-    <Text fx:id="totalSizeText" />
     <Button fx:id="cancelButton" text="cancel" />
   </FlowPane>
 </fx:root>

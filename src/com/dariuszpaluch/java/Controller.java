@@ -36,18 +36,34 @@ public class Controller {
     public ProgressBar deleteProgressBar;
     public Text sizeText;
     public FlowPane operationFlowPane;
+    public Button copyButton;
+    public Button cutButton;
+    public Button pasteButton;
 
     @FXML
     void initialize() {
         deleteButton.setOnAction(this::onClickDeleteButton);
+        copyButton.setOnAction(this::onClickCopyButton);
+        cutButton.setOnAction(this::onClickCutButton);
+        pasteButton.setOnAction(this::onClickPasteButton);
         this.changeLanguageButton.setOnAction(this::onChangeLocationButtonClick);
 
         LanguageMechanics.addItem(footerText, "copyright");
         LanguageMechanics.addItem(deleteButton, "delete");
         LanguageMechanics.addItem(changeNameButton, "changeName");
+        LanguageMechanics.addItem(copyButton, "copy");
+        LanguageMechanics.addItem(cutButton, "cut");
+        LanguageMechanics.addItem(pasteButton, "paste");
+
+        pasteButton.setDisable(true);
+
         LanguageMechanics.updateAllItems();
         changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
+
+
     }
+
+
 
     private void onChangeLocationButtonClick(ActionEvent actionEvent) {
         this.onToogleLocation();
@@ -63,39 +79,22 @@ public class Controller {
 
         changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
     }
-
-    public class GetSizeTheadTask extends Task {
-        private double totalSize = 0.0;
-        private Path path;
-        private ReadOnlyLongProperty obsTotalSize;
-        private GetSizeDirVisitor visitor = new GetSizeDirVisitor();
-
-        public GetSizeTheadTask(Path path) {
-            this.path = path;
-            obsTotalSize = visitor.getObsTotalSize();
-        }
-
-        public double getTotalSize() {
-            return totalSize;
-        }
-
-        public ReadOnlyLongProperty getObsTotalSize() {
-            return obsTotalSize;
-        }
-
-        @Override
-        protected Object call() throws Exception {
-            Files.walkFileTree(path, visitor);
-            return visitor.getTotalSize();
-//            DirUtils.getTotalSize(this.path);
-        }
-    }
-
-
     private void onClickDeleteButton(ActionEvent actionEvent) {
         Path path = leftFilesBrowserController.getSelectedPaths();
 
         operationFlowPane.getChildren().add(new OperationProgressController(path));
+    }
+
+    private void onClickPasteButton(ActionEvent actionEvent) {
+        pasteButton.setDisable(true);
+    }
+
+    private void onClickCutButton(ActionEvent actionEvent) {
+        pasteButton.setDisable(false);
+    }
+
+    private void onClickCopyButton(ActionEvent actionEvent) {
+        pasteButton.setDisable(false);
     }
 
 //    private void onClickChangeNameButton(ActionEvent actionEvent) {

@@ -13,13 +13,19 @@ import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.concurrent.Delayed;
 
-public class GetSizeDirVisitor extends SimpleFileVisitor<Path> {
+public class GetSizeDirVisitor extends MySimpleFileVisitor {
     private long totalSize = 0;
     private ReadOnlyLongWrapper obsTotalSizeWrapper = new ReadOnlyLongWrapper(0);
     private ReadOnlyLongProperty obsTotalSize = obsTotalSizeWrapper.getReadOnlyProperty();
 
-    public ReadOnlyLongProperty getObsTotalSize() {
-        return obsTotalSize;
+    @Override
+    public long getProcessedFilesSize() {
+        return this.totalSize;
+    }
+
+    @Override
+    public ReadOnlyLongProperty getObsProcessedFilesSize() {
+        return this.obsTotalSize;
     }
 
     @Override
@@ -39,9 +45,5 @@ public class GetSizeDirVisitor extends SimpleFileVisitor<Path> {
             return FileVisitResult.CONTINUE;
         }
         throw exc;
-    }
-
-    public long getTotalSize() {
-        return totalSize;
     }
 }

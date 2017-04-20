@@ -9,16 +9,18 @@ import java.io.IOException;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 
-public class DeleteDirVisitor extends SimpleFileVisitor<Path> {
+public class DeleteDirVisitor extends MySimpleFileVisitor {
     private long deletedFilesSize = 0;
     private ReadOnlyLongWrapper obsDeletedFilesSizeWrapper = new ReadOnlyLongWrapper(0);
     private ReadOnlyLongProperty obsDeletedFilesSize = obsDeletedFilesSizeWrapper.getReadOnlyProperty();
 
-    public long getDeletedFilesSize() {
+    @Override
+    public long getProcessedFilesSize() {
         return deletedFilesSize;
     }
 
-    public ReadOnlyLongProperty getObsDeletedFilesSize() {
+    @Override
+    public ReadOnlyLongProperty getObsProcessedFilesSize() {
         return obsDeletedFilesSize;
     }
 
