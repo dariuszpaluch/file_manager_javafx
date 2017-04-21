@@ -17,59 +17,50 @@
     <FlowPane>
       <Button fx:id="changeLanguageButton" text="EN"/>
       <Button fx:id="changeNameButton" text="changeName"/>
-      <Button fx:id="deleteButton">
-        <graphic>
-          <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
-            <image>
-              <Image url="@/images/delete_black.png" />
-            </image>
-          </ImageView>
-        </graphic>
-        <tooltip>
-          <Tooltip fx:id="deleteButtonTooltip" text="deleteTooltip" />
-        </tooltip>
-      </Button>
-      <Button fx:id="copyButton">
-        <graphic>
-          <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
-            <image>
-              <Image url="@/images/copy_black.png" />
-            </image>
-          </ImageView>
-        </graphic>
-        <tooltip>
-          <Tooltip fx:id="copyButtonTooltip" text="copyTooltip" />
-        </tooltip>
-      </Button>
-      <Button fx:id="cutButton">
-        <graphic>
-          <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
-            <image>
-              <Image url="@/images/cut_black.png" />
-            </image>
-          </ImageView>
-        </graphic>
-        <tooltip>
-          <Tooltip fx:id="cutButtonTooltip" text="cutTooltip" />
-        </tooltip>
-      </Button>
-      <Button fx:id="pasteButton">
-        <graphic>
-          <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
-            <image>
-              <Image url="@/images/paste_black.png" />
-            </image>
-          </ImageView>
-        </graphic>
-        <tooltip>
-          <Tooltip fx:id="pasteButtonTooltip" text="pasteTooltip" />
-        </tooltip>
-      </Button>
+
     </FlowPane>
   </top>
   <center>
     <HBox spacing="10" VBox.vgrow="ALWAYS">
       <fx:include fx:id="leftFilesBrowser" source="files_browser.fxml" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS"/>
+      <FlowPane orientation="VERTICAL" prefWidth="20" maxWidth="20" minWidth="20" alignment="CENTER">
+        <Button fx:id="deleteButton">
+          <graphic>
+            <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+              <image>
+                <Image url="@/images/delete_black.png" />
+              </image>
+            </ImageView>
+          </graphic>
+          <tooltip>
+            <Tooltip fx:id="deleteButtonTooltip" text="deleteTooltip" />
+          </tooltip>
+        </Button>
+        <Button fx:id="copyButton">
+          <graphic>
+            <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+              <image>
+                <Image url="@/images/copy_black.png" />
+              </image>
+            </ImageView>
+          </graphic>
+          <tooltip>
+            <Tooltip fx:id="copyButtonTooltip" text="copyTooltip" />
+          </tooltip>
+        </Button>
+        <Button fx:id="cutButton">
+          <graphic>
+            <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+              <image>
+                <Image url="@/images/cut_black.png" />
+              </image>
+            </ImageView>
+          </graphic>
+          <tooltip>
+            <Tooltip fx:id="cutButtonTooltip" text="cutTooltip" />
+          </tooltip>
+        </Button>
+      </FlowPane>
       <fx:include fx:id="rightFilesBrowser" source="files_browser.fxml" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS"/>
     </HBox>
   </center>

@@ -1,5 +1,6 @@
 package com.dariuszpaluch.java;
 
+import javafx.beans.NamedArg;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
@@ -7,6 +8,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
@@ -14,6 +17,7 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
+import java.awt.*;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -36,6 +40,15 @@ public class FilesBrowserController {
     private Path currentDisk;
 
     private StringProperty  currentPathStringProperty = new SimpleStringProperty("");
+
+    public class SelectRowEvent extends Event {
+
+        public SelectRowEvent(@NamedArg("eventType") EventType<? extends Event> eventType) {
+            super(eventType);
+        }
+    }
+    public static EventType<Event> SELECT_ROW_EVENT_TYPE = new EventType<>("SELECT_ROW_EVENT_TYPE");
+    Event selectRowEvent = new FilesBrowserController.SelectRowEvent(SELECT_ROW_EVENT_TYPE);
 
     public FilesBrowserController() {
         driversList.setAll(FileUtils.getListOfDrivers());

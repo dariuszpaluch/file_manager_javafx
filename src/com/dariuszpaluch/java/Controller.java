@@ -6,6 +6,7 @@ import com.dariuszpaluch.java.utils.visitor.MySimpleFileVisitor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
@@ -17,7 +18,7 @@ import java.nio.file.Path;
 import java.util.Locale;
 
 public class Controller {
-    public Tooltip pasteButtonTooltip;
+//    public Tooltip pasteButtonTooltip;
     public Tooltip cutButtonTooltip;
     public Tooltip deleteButtonTooltip;
     public Tooltip copyButtonTooltip;
@@ -57,7 +58,7 @@ public class Controller {
     public VBox operationFlowPane;
     public Button copyButton;
     public Button cutButton;
-    public Button pasteButton;
+//    public Button pasteButton;
 
     private OperationStorage operationStorage = null;
 
@@ -67,7 +68,7 @@ public class Controller {
         deleteButton.setOnAction(this::onClickDeleteButton);
         copyButton.setOnAction(this::onClickCopyButton);
         cutButton.setOnAction(this::onClickCutButton);
-        pasteButton.setOnAction(this::onClickPasteButton);
+//        pasteButton.setOnAction(this::onClickPasteButton);
         this.changeLanguageButton.setOnAction(this::onChangeLocationButtonClick);
 
         LanguageMechanics.addItem(footerText, "copyright");
@@ -75,22 +76,35 @@ public class Controller {
         LanguageMechanics.addItem(changeNameButton, "changeName");
         LanguageMechanics.addItem(copyButtonTooltip, "copy");
         LanguageMechanics.addItem(cutButtonTooltip, "cut");
-        LanguageMechanics.addItem(pasteButtonTooltip, "paste");
+//        LanguageMechanics.addItem(pasteButtonTooltip, "paste");
 
-        pasteButton.setDisable(true);
+//        pasteButton.setDisable(true);
 
         LanguageMechanics.updateAllItems();
         changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
     }
 
-    private FilesBrowserController getSelectedFilesBrowserController() {
+    private FilesBrowserController getSelectedFilesBrowserController() throws NullPointerException{
         if(leftFilesBrowserController.getSelectedPaths() != null) {
             return leftFilesBrowserController;
-        }
-        else {
+        } else if(rightFilesBrowserController.getSelectedPaths() != null) {
             return rightFilesBrowserController;
         }
+
+        throw new NullPointerException();
     }
+
+    //TODO to remove
+    private FilesBrowserController getUnSelectedFilesBrowserController() throws NullPointerException{
+        if(leftFilesBrowserController.getSelectedPaths() == null) {
+            return leftFilesBrowserController;
+        } else if(rightFilesBrowserController.getSelectedPaths() == null) {
+            return rightFilesBrowserController;
+        }
+        return null;
+    }
+
+
 
     private void onChangeLocationButtonClick(ActionEvent actionEvent) {
         this.onToogleLocation();
@@ -126,7 +140,7 @@ public class Controller {
     }
 
     private void onClickPasteButton(ActionEvent actionEvent) {
-        pasteButton.setDisable(true);
+//        pasteButton.setDisable(true);
 
         Path toPath = getSelectedFilesBrowserController().getSelectedPaths().getParent();
         Path fromPath = this.operationStorage.getPath();
@@ -136,16 +150,33 @@ public class Controller {
     private void onClickCutButton(ActionEvent actionEvent) {
         Path path = getSelectedFilesBrowserController().getSelectedPaths();
 
-        this.operationStorage = new OperationStorage(path, OperationTypeEnum.MOVE);
+//        this.operationStorage = new OperationStorage(path, OperationTypeEnum.MOVE);
 
-        pasteButton.setDisable(false);
+//        pasteButton.setDisable(false);
     }
 
     private void onClickCopyButton(ActionEvent actionEvent) {
-        Path path = getSelectedFilesBrowserController().getSelectedPaths();
+        Path selectedPath = null;
+        try{
+           selectedPath = getSelectedFilesBrowserController().getSelectedPaths();
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setHeaderText("Look, a Warning Dialog");
+            alert.setContentText("Careful with the next step!");
 
-        this.operationStorage = new OperationStorage(path, OperationTypeEnum.COPIE);
-        pasteButton.setDisable(false);
+            alert.showAndWait();
+        }finally {
+            Path toPath = getUnSelectedFilesBrowserController().getCurrentPath();
+            this.addOperation(selectedPath, new CopyDirVisitor(selectedPath, toPath));
+
+        }
+
+
+//        this.operationStorage = new OperationStorage(path, OperationTypeEnum.COPIE);
+//        this.addOperation(fromPath, new CopyDirVisitor(fromPath, toPath));
+
+//        pasteButton.setDisable(false);
     }
 
 //    private void onClickChangeNameButton(ActionEvent actionEvent) {
