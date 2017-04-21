@@ -8,16 +8,63 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
 <BorderPane stylesheets="@/styles/main_layout.css" xmlns="http://javafx.com/javafx/8.0.112"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dariuszpaluch.java.Controller">
   <top>
     <FlowPane>
       <Button fx:id="changeLanguageButton" text="EN"/>
       <Button fx:id="changeNameButton" text="changeName"/>
-      <Button fx:id="deleteButton" text="delete"/>
-      <Button fx:id="copyButton" text="copy"/>
-      <Button fx:id="cutButton" text="cut"/>
-      <Button fx:id="pasteButton" text="paste"/>
+      <Button fx:id="deleteButton">
+        <graphic>
+          <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+            <image>
+              <Image url="@/images/delete_black.png" />
+            </image>
+          </ImageView>
+        </graphic>
+        <tooltip>
+          <Tooltip fx:id="deleteButtonTooltip" text="deleteTooltip" />
+        </tooltip>
+      </Button>
+      <Button fx:id="copyButton">
+        <graphic>
+          <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+            <image>
+              <Image url="@/images/copy_black.png" />
+            </image>
+          </ImageView>
+        </graphic>
+        <tooltip>
+          <Tooltip fx:id="copyButtonTooltip" text="copyTooltip" />
+        </tooltip>
+      </Button>
+      <Button fx:id="cutButton">
+        <graphic>
+          <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+            <image>
+              <Image url="@/images/cut_black.png" />
+            </image>
+          </ImageView>
+        </graphic>
+        <tooltip>
+          <Tooltip fx:id="cutButtonTooltip" text="cutTooltip" />
+        </tooltip>
+      </Button>
+      <Button fx:id="pasteButton">
+        <graphic>
+          <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+            <image>
+              <Image url="@/images/paste_black.png" />
+            </image>
+          </ImageView>
+        </graphic>
+        <tooltip>
+          <Tooltip fx:id="pasteButtonTooltip" text="pasteTooltip" />
+        </tooltip>
+      </Button>
     </FlowPane>
   </top>
   <center>

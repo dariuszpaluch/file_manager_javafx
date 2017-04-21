@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -16,6 +17,11 @@ import java.nio.file.Path;
 import java.util.Locale;
 
 public class Controller {
+    public Tooltip pasteButtonTooltip;
+    public Tooltip cutButtonTooltip;
+    public Tooltip deleteButtonTooltip;
+    public Tooltip copyButtonTooltip;
+
     enum OperationTypeEnum {
         COPIE,
         MOVE
@@ -65,11 +71,11 @@ public class Controller {
         this.changeLanguageButton.setOnAction(this::onChangeLocationButtonClick);
 
         LanguageMechanics.addItem(footerText, "copyright");
-        LanguageMechanics.addItem(deleteButton, "delete");
+        LanguageMechanics.addItem(deleteButtonTooltip, "delete");
         LanguageMechanics.addItem(changeNameButton, "changeName");
-        LanguageMechanics.addItem(copyButton, "copy");
-        LanguageMechanics.addItem(cutButton, "cut");
-        LanguageMechanics.addItem(pasteButton, "paste");
+        LanguageMechanics.addItem(copyButtonTooltip, "copy");
+        LanguageMechanics.addItem(cutButtonTooltip, "cut");
+        LanguageMechanics.addItem(pasteButtonTooltip, "paste");
 
         pasteButton.setDisable(true);
 
