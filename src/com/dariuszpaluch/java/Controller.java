@@ -1,45 +1,60 @@
 package com.dariuszpaluch.java;
 
-import com.dariuszpaluch.java.utils.DirUtils;
+import com.dariuszpaluch.java.utils.visitor.CopyDirVisitor;
 import com.dariuszpaluch.java.utils.visitor.DeleteDirVisitor;
-import com.dariuszpaluch.java.utils.visitor.GetSizeDirVisitor;
-import javafx.beans.property.*;
-import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
+import com.dariuszpaluch.java.utils.visitor.MySimpleFileVisitor;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Locale;
 
 public class Controller {
+    enum OperationTypeEnum {
+        COPIE,
+        MOVE
+    };
+
+    class OperationStorage {
+       private Path path;
+       private OperationTypeEnum type;
+
+        public OperationStorage(Path path, OperationTypeEnum type) {
+            this.path = path;
+            this.type = type;
+        }
+
+        public Path getPath() {
+            return path;
+        }
+
+        public OperationTypeEnum getType() {
+            return type;
+        }
+    }
     public Button deleteButton;
     public Button changeNameButton;
 
-    @FXML
     public FilesBrowserController leftFilesBrowserController;
-    @FXML
     public FilesBrowserController rightFilesBrowserController;
+
     public Button changeLanguageButton;
     public Text footerText;
     public ProgressBar deleteProgressBar;
     public Text sizeText;
-    public FlowPane operationFlowPane;
+    public VBox operationFlowPane;
     public Button copyButton;
     public Button cutButton;
     public Button pasteButton;
+
+    private OperationStorage operationStorage = null;
+
 
     @FXML
     void initialize() {
@@ -60,11 +75,16 @@ public class Controller {
 
         LanguageMechanics.updateAllItems();
         changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
-
-
     }
 
-
+    private FilesBrowserController getSelectedFilesBrowserController() {
+        if(leftFilesBrowserController.getSelectedPaths() != null) {
+            return leftFilesBrowserController;
+        }
+        else {
+            return rightFilesBrowserController;
+        }
+    }
 
     private void onChangeLocationButtonClick(ActionEvent actionEvent) {
         this.onToogleLocation();
@@ -80,21 +100,45 @@ public class Controller {
 
         changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
     }
-    private void onClickDeleteButton(ActionEvent actionEvent) {
-        Path path = leftFilesBrowserController.getSelectedPaths();
 
-        operationFlowPane.getChildren().add(new OperationProgressController(path, new DeleteDirVisitor()));
+    private void updateAllFilesBrowsers() {
+        this.leftFilesBrowserController.updateAll();
+        this.rightFilesBrowserController.updateAll();
+    }
+
+    private void addOperation(Path path, MySimpleFileVisitor visitor) {
+        OperationProgressController operationProgressController = new OperationProgressController(path, visitor);
+        operationProgressController.addEventHandler(OperationProgressController.COMPLETED_EVENT_TYPE, event -> {
+            this.updateAllFilesBrowsers();
+        });
+        operationFlowPane.getChildren().add(operationProgressController);
+    }
+
+    private void onClickDeleteButton(ActionEvent actionEvent) {
+        Path path = getSelectedFilesBrowserController().getSelectedPaths();
+        this.addOperation(path, new DeleteDirVisitor());
     }
 
     private void onClickPasteButton(ActionEvent actionEvent) {
         pasteButton.setDisable(true);
+
+        Path toPath = getSelectedFilesBrowserController().getSelectedPaths().getParent();
+        Path fromPath = this.operationStorage.getPath();
+        this.addOperation(fromPath, new CopyDirVisitor(fromPath, toPath));
     }
 
     private void onClickCutButton(ActionEvent actionEvent) {
+        Path path = getSelectedFilesBrowserController().getSelectedPaths();
+
+        this.operationStorage = new OperationStorage(path, OperationTypeEnum.MOVE);
+
         pasteButton.setDisable(false);
     }
 
     private void onClickCopyButton(ActionEvent actionEvent) {
+        Path path = getSelectedFilesBrowserController().getSelectedPaths();
+
+        this.operationStorage = new OperationStorage(path, OperationTypeEnum.COPIE);
         pasteButton.setDisable(false);
     }
 

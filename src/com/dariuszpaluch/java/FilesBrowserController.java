@@ -17,6 +17,8 @@ import javafx.scene.text.Text;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class FilesBrowserController {
@@ -67,6 +69,10 @@ public class FilesBrowserController {
         return currentDisk;
     }
 
+    public boolean checkFocus() {
+        return this.filesTableView.isFocused();
+    }
+
     public void setCurrentDisk(Path currentDisk) {
         this.currentDisk = currentDisk;
         this.driveChoiceBox.getSelectionModel().select(currentDisk.toString());
@@ -111,7 +117,7 @@ public class FilesBrowserController {
         this.setCurrentPath(this.currentPath.getParent());
     }
 
-    private void updateAll() {
+    public void updateAll() {
         this.updateFilesInCurrentPath();
         this.updateGoUpButton();
     }
@@ -139,7 +145,13 @@ public class FilesBrowserController {
     }
 
     public Path getSelectedPaths() {
-        return ((FileRow)this.filesTableView.getSelectionModel().getSelectedItem()).getPath();
+        Object selectedItem = this.filesTableView.getSelectionModel().getSelectedItem();
+
+        if(selectedItem == null) {
+            return null;
+        }
+
+        return ((FileRow)selectedItem).getPath();
     }
 
 

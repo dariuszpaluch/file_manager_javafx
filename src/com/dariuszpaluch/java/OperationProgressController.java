@@ -3,23 +3,30 @@ package com.dariuszpaluch.java;
 import com.dariuszpaluch.java.utils.tasks.WalkFileTreeTheadTask;
 import com.dariuszpaluch.java.utils.visitor.GetSizeDirVisitor;
 import com.dariuszpaluch.java.utils.visitor.MySimpleFileVisitor;
+import javafx.application.Platform;
+import javafx.beans.NamedArg;
 import javafx.beans.binding.DoubleBinding;
 import javafx.beans.binding.NumberBinding;
+import javafx.beans.property.LongProperty;
 import javafx.beans.property.ReadOnlyLongProperty;
 import javafx.beans.value.ObservableLongValue;
 import javafx.concurrent.WorkerStateEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.nio.file.Path;
 
-public class OperationProgressController extends FlowPane {
+public class OperationProgressController extends VBox {
     private Path path;
     public ProgressBar progressBar;
     public Button cancelButton;
@@ -35,6 +42,14 @@ public class OperationProgressController extends FlowPane {
 
     private WalkFileTreeTheadTask getSizeTreeTheadTask;
     private WalkFileTreeTheadTask operationTreeTheadTask;
+    public class CompletedEvent extends Event {
+
+        public CompletedEvent(@NamedArg("eventType") EventType<? extends Event> eventType) {
+            super(eventType);
+        }
+    }
+    public static EventType<Event> COMPLETED_EVENT_TYPE = new EventType<>("COMPLETED");
+    Event completedEvent = new CompletedEvent(COMPLETED_EVENT_TYPE);
 
     public OperationProgressController(Path path, MySimpleFileVisitor operationSimpleFileVisitor) {
         this.path = path;
@@ -79,7 +94,7 @@ public class OperationProgressController extends FlowPane {
 
         removingPathText.setText(this.path.toString());
         progressBar.setProgress(-1.0);
-        totalSizeText.textProperty().bind(operationFilesSize.asString());
+
         new Thread(getSizeTreeTheadTask).start();
     }
 
@@ -101,8 +116,10 @@ public class OperationProgressController extends FlowPane {
     }
     private void onGetTotalSizeSuccess() {
         new Thread(this.operationTreeTheadTask).start();
-//        Long result = (Long) getSizeTreeTheadTask.getValue();
-//        totalSizeText.setText(Long.toString(result));
+        Long result = (Long) getSizeTreeTheadTask.getValue();
+        Platform.runLater(() -> {
+            totalSizeText.setText(Long.toString(result));
+        });
 
         progressBar.progressProperty().bind(calculateProgress(this.operationFilesSize, this.processedFilesSizeProperty));
     }
@@ -110,6 +127,7 @@ public class OperationProgressController extends FlowPane {
     private void onOperationSuccess() {
         cancelButton.setVisible(false);
 //        System.out.println(Long.toString((Long) deleteTreeTheadTask.getValue()));
+        this.fireEvent(completedEvent);
     }
 
 }

@@ -27,6 +27,8 @@ public class MySimpleFileVisitor extends SimpleFileVisitor<Path> {
     private void addProcessedAmount(long amount) {
         this.processedFilesSize += amount;
 
+        System.out.println(this.processedFilesSize);
+
         Platform.runLater(() -> {
             this.obsProcessedFilesSizeWrapper.set(this.processedFilesSize);
         });
