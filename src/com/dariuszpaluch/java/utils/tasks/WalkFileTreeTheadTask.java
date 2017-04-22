@@ -18,16 +18,16 @@ public class WalkFileTreeTheadTask extends Task {
     public WalkFileTreeTheadTask(Path path, MySimpleFileVisitor visitor) {
         this.path = path;
         this.visitor = visitor;
-//        this.obsProcessedFilesSize = visitor.getObsProcessedFilesSize();
     }
-
-//    public ReadOnlyLongProperty getObsProcessedFilesSize() {
-//        return obsProcessedFilesSize;
-//    }
 
     @Override
     protected Object call() throws Exception {
-        Files.walkFileTree(path, visitor);
+        if(Files.isDirectory(path)) {
+            Files.walkFileTree(path, visitor);
+        }
+        else {
+            visitor.visitFile(path, null);
+        }
         return visitor.getProcessedFilesSize();
     }
 }

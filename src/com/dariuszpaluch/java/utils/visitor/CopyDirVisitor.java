@@ -37,8 +37,8 @@ public class CopyDirVisitor extends MySimpleFileVisitor {
             System.out.println("CREATE");
             Files.createDirectory(targetPath);
             this.addProcessedDir();
-
         }
+
         return FileVisitResult.CONTINUE;
     }
 
