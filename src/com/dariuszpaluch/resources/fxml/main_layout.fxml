@@ -11,6 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.control.ScrollPane?>
 <BorderPane stylesheets="@/styles/main_layout.css" xmlns="http://javafx.com/javafx/8.0.112"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dariuszpaluch.java.Controller">
   <top>
@@ -65,7 +66,12 @@
     </HBox>
   </center>
   <right>
-    <VBox fx:id="operationFlowPane" prefWidth="200" maxWidth="200"/>
+    <ScrollPane fitToWidth="true"  prefWidth="200">
+      <content>
+        <VBox fx:id="operationFlowPane" prefWidth="200" maxWidth="200"   maxHeight="-Infinity" minHeight="-Infinity"/>
+      </content>
+    </ScrollPane>
+
   </right>
   <bottom>
     <FlowPane styleClass="footer">
