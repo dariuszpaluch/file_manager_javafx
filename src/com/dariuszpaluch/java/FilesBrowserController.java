@@ -13,26 +13,28 @@ import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
-import java.awt.*;
 import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class FilesBrowserController {
     public FilesTableView filesTableView;
     public Text currentPathText;
     public Button goUpButton;
     public Button refreshButton;
-    public ChoiceBox driveChoiceBox;
+    public ChoiceBox<String> driveChoiceBox;
     public Tooltip goUpButtonTooltip;
     public Tooltip refreshButtonTooltip;
+    public TableColumn<FileRow, String> nameTableColumn;
+    public TableColumn<FileRow, String> extTableColumn;
+    public TableColumn<FileRow, String> sizeTableColumn;
+    public TableColumn<FileRow, String> dateTableColumn;
+    public TableColumn<FileRow, String> attrTableColumn;
 
     private ObservableList<FileRow> filesRows = FXCollections.observableArrayList();
     private ObservableList<String> driversList = FXCollections.observableArrayList();
@@ -56,6 +58,12 @@ public class FilesBrowserController {
 
     @FXML
     void initialize() {
+        nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        extTableColumn.setCellValueFactory(new PropertyValueFactory<>("ext"));
+        sizeTableColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
+        dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        attrTableColumn.setCellValueFactory(new PropertyValueFactory<>("attr"));
+////            column.setResizable(item.resizable);
         this.filesTableView.setItems(this.filesRows);
         this.filesTableView.setOnMouseClicked(this::onTableRowClick);
         this.refreshButton.setOnAction(this::onRefreshButtonClic);
@@ -133,6 +141,7 @@ public class FilesBrowserController {
     public void updateAll() {
         this.updateFilesInCurrentPath();
         this.updateGoUpButton();
+        filesTableView.scrollTo(0);
     }
 
     private void updateGoUpButton() {

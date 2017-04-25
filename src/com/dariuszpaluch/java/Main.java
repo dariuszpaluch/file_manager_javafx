@@ -24,7 +24,7 @@ public class Main extends Application {
         LanguageMechanics.setState(primaryStage, "applicationName");
         Parent stackPane = loader.load();
 
-        Scene scene = new Scene(stackPane, 1000, 500);
+        Scene scene = new Scene(stackPane, 1200, 500);
         scene.getStylesheets().clear();
 //        scene.getStylesheets().add(getClass().getResource("/styles/theme.css").toExternalForm());
 
