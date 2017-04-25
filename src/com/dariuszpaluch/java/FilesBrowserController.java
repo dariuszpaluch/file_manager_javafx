@@ -1,5 +1,6 @@
 package com.dariuszpaluch.java;
 
+import javafx.application.Platform;
 import javafx.beans.NamedArg;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -7,8 +8,11 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -58,12 +62,14 @@ public class FilesBrowserController {
 
     @FXML
     void initialize() {
+        filesTableView.setDisable(true);
         nameTableColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         extTableColumn.setCellValueFactory(new PropertyValueFactory<>("ext"));
         sizeTableColumn.setCellValueFactory(new PropertyValueFactory<>("size"));
         dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         attrTableColumn.setCellValueFactory(new PropertyValueFactory<>("attr"));
-////            column.setResizable(item.resizable);
+
+
         this.filesTableView.setItems(this.filesRows);
         this.filesTableView.setOnMouseClicked(this::onTableRowClick);
         this.refreshButton.setOnAction(this::onRefreshButtonClic);
@@ -88,10 +94,6 @@ public class FilesBrowserController {
 
     public Path getCurrentDisk() {
         return currentDisk;
-    }
-
-    public boolean checkFocus() {
-        return this.filesTableView.isFocused();
     }
 
     public void setCurrentDisk(Path currentDisk) {
@@ -139,30 +141,47 @@ public class FilesBrowserController {
     }
 
     public void updateAll() {
-        this.updateFilesInCurrentPath();
-        this.updateGoUpButton();
-        filesTableView.scrollTo(0);
+        this.filesRows.clear();
+        this.filesTableView.setDisable(false);
+
+        Task task = new Task() {
+            @Override
+            protected Object call() throws Exception {
+                return updateFilesInCurrentPath(currentPath);
+            }
+        };
+
+        new Thread(task).start();
+
+        task.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+            @Override
+            public void handle(WorkerStateEvent event) {
+                filesTableView.setItems((ObservableList<FileRow>)task.getValue());
+            }
+        });
     }
 
     private void updateGoUpButton() {
         goUpButton.setDisable(this.currentPath.getParent() == null);
     }
 
-    private void updateFilesInCurrentPath() {
-        this.filesRows.clear();
+    private ObservableList<FileRow> updateFilesInCurrentPath(Path currentPath) {
+        ObservableList<FileRow> filesRows = FXCollections.observableArrayList();
 
-        if(FileUtils.isDir(this.currentPath)) {
-            final File currentFile = this.currentPath.toFile();
+        if(FileUtils.isDir(currentPath)) {
+            final File currentFile = currentPath.toFile();
 
             for (final File fileEntry : currentFile.listFiles()) {
                 FileRow fileRow = new FileRow(fileEntry);
                 if (fileEntry.isDirectory()) {
-                    this.filesRows.add(fileRow);
+                    filesRows.add(fileRow);
                 } else {
-                    this.filesRows.add(fileRow);
+                    filesRows.add(fileRow);
                 }
             }
         }
+
+        return filesRows;
 
     }
 

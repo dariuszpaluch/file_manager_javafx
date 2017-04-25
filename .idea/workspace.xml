@@ -7,13 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/file_manager_javafx/com/dariuszpaluch/resources/fxml/files_browser.fxml" afterPath="$PROJECT_DIR$/out/production/file_manager_javafx/com/dariuszpaluch/resources/fxml/files_browser.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/file_manager_javafx/fxml/files_browser.fxml" afterPath="$PROJECT_DIR$/out/production/file_manager_javafx/fxml/files_browser.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesBrowserController.java" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesBrowserController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesTableView.java" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesTableView.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/dariuszpaluch/java/Main.java" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/java/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/dariuszpaluch/resources/fxml/files_browser.fxml" afterPath="$PROJECT_DIR$/src/com/dariuszpaluch/resources/fxml/files_browser.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -77,27 +72,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="operation_progress.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/resources/fxml/operation_progress.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="OperationProgressController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/OperationProgressController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="711">
-              <caret line="74" column="37" lean-forward="true" selection-start-line="74" selection-start-column="37" selection-end-line="74" selection-end-column="37" />
+            <state relative-caret-position="236">
+              <caret line="98" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
               <folding>
-                <element signature="e#1687#1688#0" expanded="true" />
-                <element signature="e#1727#1728#0" expanded="true" />
                 <element signature="e#2714#2715#0" expanded="true" />
                 <element signature="e#2769#2770#0" expanded="true" />
                 <element signature="e#2946#2947#0" expanded="true" />
@@ -110,39 +90,38 @@
       <file leaf-file-name="FilesBrowserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesBrowserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
+            <state relative-caret-position="311">
+              <caret line="59" column="19" lean-forward="false" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="19" />
               <folding>
-                <marker date="1493147937778" expanded="false" signature="3694:3705" ph=" { " />
-                <marker date="1493147937778" expanded="false" signature="3724:3730" ph=" }" />
-                <marker date="1493147937778" expanded="false" signature="3763:3774" ph=" { " />
-                <marker date="1493147937778" expanded="false" signature="3813:3819" ph=" }" />
-                <marker date="1493147937778" expanded="false" signature="4102:4113" ph=" { " />
-                <marker date="1493147937778" expanded="false" signature="4128:4134" ph=" }" />
-                <marker date="1493147937778" expanded="false" signature="4197:4208" ph=" { " />
-                <marker date="1493147937778" expanded="false" signature="4225:4231" ph=" }" />
-                <marker date="1493147937778" expanded="false" signature="4690:4701" ph=" { " />
-                <marker date="1493147937778" expanded="false" signature="4720:4726" ph=" }" />
-                <marker date="1493147937778" expanded="false" signature="5149:5160" ph=" { " />
-                <marker date="1493147937778" expanded="false" signature="5210:5216" ph=" }" />
-                <marker date="1493147937778" expanded="false" signature="5400:5411" ph=" { " />
-                <marker date="1493147937778" expanded="false" signature="5471:5477" ph=" }" />
-                <marker date="1493147937778" expanded="true" signature="6263:6269" ph="{...}" />
+                <element signature="e#2218#2219#0" expanded="true" />
+                <element signature="e#2282#2283#0" expanded="true" />
+                <element signature="e#5393#5568#0" expanded="true" />
+                <element signature="e#5567#5568#0" expanded="true" />
+                <element signature="e#5904#5905#0" expanded="true" />
+                <element signature="e#5979#5980#0" expanded="true" />
+                <marker date="1493149491396" expanded="false" signature="3828:3839" ph=" { " />
+                <marker date="1493149491396" expanded="false" signature="3858:3864" ph=" }" />
+                <marker date="1493149491396" expanded="false" signature="4147:4158" ph=" { " />
+                <marker date="1493149491396" expanded="false" signature="4173:4179" ph=" }" />
+                <marker date="1493149491396" expanded="false" signature="4242:4253" ph=" { " />
+                <marker date="1493149491396" expanded="false" signature="4270:4276" ph=" }" />
+                <marker date="1493149491396" expanded="false" signature="4735:4746" ph=" { " />
+                <marker date="1493149491396" expanded="false" signature="4765:4771" ph=" }" />
+                <marker date="1493149491396" expanded="false" signature="5194:5205" ph=" { " />
+                <marker date="1493149491396" expanded="false" signature="5255:5261" ph=" }" />
+                <marker date="1493149491396" expanded="true" signature="6857:6863" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main_layout.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/resources/fxml/main_layout.fxml">
+      <file leaf-file-name="FileUtils.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/FileUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="635">
-              <caret line="68" column="26" lean-forward="false" selection-start-line="68" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+            <state relative-caret-position="493">
+              <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
           </provider>
         </entry>
       </file>
@@ -172,11 +151,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FilesTableView.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DirUtils.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/utils/DirUtils.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FilesTableView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesTableView.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+              <folding>
+                <element signature="e#1051#1052#0" expanded="true" />
+                <element signature="e#1095#1096#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WalkFileTreeTheadTask.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/utils/tasks/WalkFileTreeTheadTask.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="425">
-              <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+              <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -185,21 +187,11 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-165">
-              <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
+            <state relative-caret-position="302">
+              <caret line="141" column="32" lean-forward="false" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
               <folding>
                 <marker date="1493143170839" expanded="true" signature="7487:7492" ph="//..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CopyDirVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/utils/visitor/CopyDirVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -229,7 +221,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>name</find>
       <find>F</find>
       <find>Fi</find>
       <find>FileData</find>
@@ -249,13 +240,17 @@
       <find>totalSizeText</find>
       <find>getProcessedFilesSize</find>
       <find>pasteButton</find>
-      <find>files</find>
       <find>changeLanguageButton</find>
       <find>changeNameButton</find>
       <find>isDir</find>
       <find>resizable</find>
       <find>initialize</find>
       <find>false</find>
+      <find>operationP</find>
+      <find>filesRows</find>
+      <find>ongetTotalSizeSuccess</find>
+      <find>files</find>
+      <find>driversList</find>
     </findStrings>
     <replaceStrings>
       <replace>File</replace>
@@ -327,10 +322,10 @@
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/java/utils/tasks/WalkFileTreeTheadTask.java" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/resources/fxml/main_layout.fxml" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/java/Controller.java" />
-        <option value="$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesBrowserController.java" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/java/Main.java" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/resources/fxml/files_browser.fxml" />
         <option value="$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesTableView.java" />
+        <option value="$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesBrowserController.java" />
       </list>
     </option>
   </component>
@@ -632,6 +627,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="file_manager_javafx2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="file_manager_javafx2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dariuszpaluch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tasks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1148,7 +1173,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119276000" />
+    <option name="totallyTimeSpent" value="121286000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
@@ -1243,13 +1268,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/stage/Stage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="826" column="0" lean-forward="false" selection-start-line="826" selection-start-column="0" selection-end-line="826" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/invoke/DirectMethodHandle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -1525,46 +1543,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/utils/tasks/WalkFileTreeTheadTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/utils/visitor/CopyDirVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/OperationProgressController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="711">
-          <caret line="74" column="37" lean-forward="true" selection-start-line="74" selection-start-column="37" selection-end-line="74" selection-end-column="37" />
-          <folding>
-            <element signature="e#1687#1688#0" expanded="true" />
-            <element signature="e#1727#1728#0" expanded="true" />
-            <element signature="e#2714#2715#0" expanded="true" />
-            <element signature="e#2769#2770#0" expanded="true" />
-            <element signature="e#2946#2947#0" expanded="true" />
-            <element signature="e#2998#2999#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/utils/DirUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1601,40 +1584,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-165">
-          <caret line="93" column="0" lean-forward="true" selection-start-line="93" selection-start-column="0" selection-end-line="93" selection-end-column="0" />
-          <folding>
-            <marker date="1493143170839" expanded="true" signature="7487:7492" ph="//..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesBrowserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="65" column="13" lean-forward="true" selection-start-line="65" selection-start-column="13" selection-end-line="65" selection-end-column="13" />
-          <folding>
-            <marker date="1493147937778" expanded="false" signature="3694:3705" ph=" { " />
-            <marker date="1493147937778" expanded="false" signature="3724:3730" ph=" }" />
-            <marker date="1493147937778" expanded="false" signature="3763:3774" ph=" { " />
-            <marker date="1493147937778" expanded="false" signature="3813:3819" ph=" }" />
-            <marker date="1493147937778" expanded="false" signature="4102:4113" ph=" { " />
-            <marker date="1493147937778" expanded="false" signature="4128:4134" ph=" }" />
-            <marker date="1493147937778" expanded="false" signature="4197:4208" ph=" { " />
-            <marker date="1493147937778" expanded="false" signature="4225:4231" ph=" }" />
-            <marker date="1493147937778" expanded="false" signature="4690:4701" ph=" { " />
-            <marker date="1493147937778" expanded="false" signature="4720:4726" ph=" }" />
-            <marker date="1493147937778" expanded="false" signature="5149:5160" ph=" { " />
-            <marker date="1493147937778" expanded="false" signature="5210:5216" ph=" }" />
-            <marker date="1493147937778" expanded="false" signature="5400:5411" ph=" { " />
-            <marker date="1493147937778" expanded="false" signature="5471:5477" ph=" }" />
-            <marker date="1493147937778" expanded="true" signature="6263:6269" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1654,10 +1603,86 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesTableView.java">
+    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/utils/tasks/WalkFileTreeTheadTask.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
-          <caret line="37" column="0" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <caret line="33" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="141" column="32" lean-forward="false" selection-start-line="141" selection-start-column="32" selection-end-line="141" selection-end-column="32" />
+          <folding>
+            <marker date="1493143170839" expanded="true" signature="7487:7492" ph="//..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/OperationProgressController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="98" column="0" lean-forward="false" selection-start-line="97" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+          <folding>
+            <element signature="e#2714#2715#0" expanded="true" />
+            <element signature="e#2769#2770#0" expanded="true" />
+            <element signature="e#2946#2947#0" expanded="true" />
+            <element signature="e#2998#2999#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/utils/DirUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesTableView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="28" column="19" lean-forward="true" selection-start-line="28" selection-start-column="19" selection-end-line="28" selection-end-column="19" />
+          <folding>
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1095#1096#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/FilesBrowserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="59" column="19" lean-forward="false" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="19" />
+          <folding>
+            <element signature="e#2218#2219#0" expanded="true" />
+            <element signature="e#2282#2283#0" expanded="true" />
+            <element signature="e#5393#5568#0" expanded="true" />
+            <element signature="e#5567#5568#0" expanded="true" />
+            <element signature="e#5904#5905#0" expanded="true" />
+            <element signature="e#5979#5980#0" expanded="true" />
+            <marker date="1493149491396" expanded="false" signature="3828:3839" ph=" { " />
+            <marker date="1493149491396" expanded="false" signature="3858:3864" ph=" }" />
+            <marker date="1493149491396" expanded="false" signature="4147:4158" ph=" { " />
+            <marker date="1493149491396" expanded="false" signature="4173:4179" ph=" }" />
+            <marker date="1493149491396" expanded="false" signature="4242:4253" ph=" { " />
+            <marker date="1493149491396" expanded="false" signature="4270:4276" ph=" }" />
+            <marker date="1493149491396" expanded="false" signature="4735:4746" ph=" { " />
+            <marker date="1493149491396" expanded="false" signature="4765:4771" ph=" }" />
+            <marker date="1493149491396" expanded="false" signature="5194:5205" ph=" { " />
+            <marker date="1493149491396" expanded="false" signature="5255:5261" ph=" }" />
+            <marker date="1493149491396" expanded="true" signature="6857:6863" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/dariuszpaluch/java/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="39" column="45" lean-forward="true" selection-start-line="39" selection-start-column="45" selection-end-line="39" selection-end-column="45" />
           <folding />
         </state>
       </provider>

@@ -37,7 +37,6 @@ public class FilesTableView extends TableView {
     }
 
     private void onSelectRow() {
-        System.out.println("Select row");
         unselectRestComponents(this);
     }
 
