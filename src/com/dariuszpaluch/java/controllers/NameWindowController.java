@@ -1,32 +1,64 @@
 package com.dariuszpaluch.java.controllers;
 
+import com.dariuszpaluch.java.utils.LanguageMechanics;
+import javafx.beans.NamedArg;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.File;
+import java.io.IOException;
 
-public class NameWindowController {
+public class NameWindowController extends FlowPane{
+
+  public class CompletedEvent extends Event {
+
+    public CompletedEvent(@NamedArg("eventType") EventType<? extends Event> eventType) {
+      super(eventType);
+    }
+  }
+
+  public static EventType<Event> COMPLETED_EVENT_TYPE = new EventType<>("COMPLETED");
+  Event completedEvent = new CompletedEvent(COMPLETED_EVENT_TYPE);
+
   public Button cancelButton;
   public Button saveButton;
   public TextField nameTextField;
   public Text errorText;
 
-  //    private String name = "";
   private File oldFile;
+
+  public NameWindowController(File oldFile) {
+    this.oldFile = oldFile;
+
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/name_window.fxml"));
+    fxmlLoader.setRoot(this);
+    fxmlLoader.setController(this);
+    try {
+      fxmlLoader.load();
+    } catch (IOException exception) {
+      throw new RuntimeException(exception);
+    }
+  }
 
   @FXML
   void initialize() {
-    this.nameTextField.setText("");
+    LanguageMechanics.addItem(saveButton, "save");
+    LanguageMechanics.addItem(cancelButton, "cancel");
+
+    this.nameTextField.setText(oldFile.getName());
     this.saveButton.setOnAction(this::onClickSave);
     this.cancelButton.setOnAction(this::onClickCancel);
   }
-
 
   private void onClickCancel(ActionEvent actionEvent) {
     try {
@@ -41,26 +73,25 @@ public class NameWindowController {
     File newFile = new File(this.oldFile.getParentFile().getPath() + File.separator + newName);
 
     if (newFile.exists()) {
-      errorText.setText("File with this name is exist");
-    } else {
-      boolean success = this.oldFile.renameTo(newFile);
-      if (success) {
+      errorText.setText(LanguageMechanics.getValueOfKey("errorFileWithThisNameIsExist"));
 
+    } else {
+      errorText.setText("");
+      boolean success = this.oldFile.renameTo(newFile);
+
+      if (success) {
+        this.fireEvent(completedEvent);
         final Node source = (Node) actionEvent.getSource();
         final Stage stage = (Stage) source.getScene().getWindow();
         stage.fireEvent(new WindowEvent(stage, WindowEvent.WINDOW_CLOSE_REQUEST));
         stage.close();
-
-        System.out.println("CLOSE");
+      }
+      else {
+        errorText.setText(LanguageMechanics.getValueOfKey("errorSomeErrorWithSave"));
       }
     }
-    System.out.println("SAVE");
   }
 
-
-//    public String getName() {
-//        return name;
-//    }
 
   public void setName(String name) {
 //        this.name = name;

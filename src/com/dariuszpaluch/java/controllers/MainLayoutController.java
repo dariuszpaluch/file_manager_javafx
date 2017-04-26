@@ -15,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -93,7 +94,7 @@ public class MainLayoutController {
 //        pasteButton.setDisable(true);
 
     LanguageMechanics.updateAllItems();
-    changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
+//    changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
   }
 
   private FilesBrowserController getSelectedFilesBrowserController() throws NullPointerException {
@@ -124,11 +125,11 @@ public class MainLayoutController {
   private void onToogleLocation() {
     if (LanguageMechanics.getLocale().toString().equals("pl")) {
       LanguageMechanics.setLocale(new Locale("en"));
+      changeLanguageButton.setText("pl".toUpperCase());
     } else {
       LanguageMechanics.setLocale(new Locale("pl"));
+      changeLanguageButton.setText("en".toUpperCase());
     }
-
-    changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
   }
 
   private void updateAllFilesBrowsers() {
@@ -176,43 +177,30 @@ public class MainLayoutController {
     }
   }
 
-//    private void onClickChangeNameButton(ActionEvent actionEvent) {
-////        this.curredFolderList.get
-//        this.openEditNameWindow(actionEvent);
-//
-//    }
-
   private void openEditNameWindow(ActionEvent actionEvent) {
     try {
       Path selectedPath = getSelectedFilesBrowserController().getSelectedPaths();
       File selectedFile = selectedPath.toFile();
-      String name = selectedPath.getFileName().toString();
+
       try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/name_window.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root));
+        NameWindowController nameWindowController = new NameWindowController(selectedFile);
+        nameWindowController.addEventHandler(NameWindowController.COMPLETED_EVENT_TYPE, event -> {
+          this.updateAllFilesBrowsers();
+        });
+        stage.setScene(new Scene(nameWindowController));
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(
                 ((Node) actionEvent.getSource()).getScene().getWindow());
-        NameWindowController controller = fxmlLoader.<NameWindowController>getController();
-//                controller.setName(name);
-        controller.setOldFile(selectedFile);
-//                stage.setOnCloseRequest(event -> readAllFilesInFolder(currentPath));
-        stage.setTitle("Change file name");
+        stage.setTitle(LanguageMechanics.getValueOfKey("changeNameWindow"));
         stage.showAndWait();
-        stage.setOnCloseRequest(event -> {
-          System.out.println("View  got close request. Notifying callback");
-//                    onCloseCallback.get().invoke();
-        });
+
       } catch (Exception e) {
         e.printStackTrace();
       }
-//        }
+
     } catch (NullPointerException e) {
       DialogUtils.showDialogNoFileSelect();
     }
   }
-
-
 }

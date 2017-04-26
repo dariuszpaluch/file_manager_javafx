@@ -7,26 +7,31 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<fx:root maxWidth="200" prefWidth="200" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root
+        maxWidth="200"
+        prefWidth="200"
+        type="javafx.scene.layout.VBox"
+        xmlns="http://javafx.com/javafx/8.0.112"
+        xmlns:fx="http://javafx.com/fxml/1">
   <VBox VBox.vgrow="ALWAYS">
     <FlowPane prefWrapLength="200.0">
-      <Text fx:id="removingFilesText" text="removingFilesText" />
-      <Text fx:id="removingPathText" text="removingPathText" />
+      <Text fx:id="removingFilesText" text="removingFilesText"/>
+      <Text fx:id="removingPathText" text="removingPathText"/>
 
       <FlowPane prefWrapLength="200.0">
         <Text fx:id="sizeTitleText" text="sizeTitleText">
           <FlowPane.margin>
-            <Insets right="10.0" />
+            <Insets right="10.0"/>
           </FlowPane.margin>
         </Text>
-        <Text fx:id="totalSizeText" text="totalSizeText" />
+        <Text fx:id="totalSizeText" text="totalSizeText"/>
       </FlowPane>
     </FlowPane>
 
-    <ProgressBar fx:id="progressBar" VBox.vgrow="ALWAYS" />
+    <ProgressBar fx:id="progressBar" VBox.vgrow="ALWAYS"/>
 
     <FlowPane prefWrapLength="200.0">
-      <Button fx:id="cancelButton" text="cancel" />
+      <Button fx:id="cancelButton" text="cancel"/>
     </FlowPane>
 
   </VBox>

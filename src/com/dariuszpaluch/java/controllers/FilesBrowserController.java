@@ -151,7 +151,7 @@ public class FilesBrowserController {
   public void updateAll() {
     this.filesRows.clear();
     this.filesTableView.setDisable(false);
-
+    updateGoUpButton();
     Task task = new Task() {
       @Override
       protected Object call() throws Exception {

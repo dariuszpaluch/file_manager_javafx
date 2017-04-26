@@ -57,6 +57,13 @@ public class LanguageMechanics {
     elementsWithSetText.add(item);
   }
 
+  public static String getValueOfKey(String bundleKey) {
+    ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages", locale);
+
+    System.out.println(bundleKey);
+    return bundle.getString(bundleKey);
+  }
+
   static private void setText(ViewItem item) {
     ResourceBundle bundle = ResourceBundle.getBundle("bundles.messages", locale);
 
