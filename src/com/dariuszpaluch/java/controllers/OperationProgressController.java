@@ -17,6 +17,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -31,6 +32,7 @@ public class OperationProgressController extends VBox {
   public Text totalSizeText;
   public Text removingFilesText;
   public Text removingPathText;
+  public Tooltip cancelButtonTooltip;
 
   private ReadOnlyLongProperty operationFilesSize;
   private ReadOnlyLongProperty processedFilesSizeProperty;
@@ -87,7 +89,7 @@ public class OperationProgressController extends VBox {
 
   @FXML
   void initialize() {
-    LanguageMechanics.addItem(cancelButton, "cancel");
+    LanguageMechanics.addItem(cancelButtonTooltip, "cancel");
     LanguageMechanics.addItem(removingFilesText, "deleting");
     LanguageMechanics.addItem(sizeTitleText, "size");
 

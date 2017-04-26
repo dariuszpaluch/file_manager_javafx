@@ -1,0 +1,11 @@
+.root {
+  -fx-padding: 20px;
+}
+
+#nameLabelTextField {
+  -fx-font-weight: bold;
+}
+
+#errorText {
+  -fx-fill: darkred;
+}

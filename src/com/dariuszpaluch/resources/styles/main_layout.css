@@ -1,13 +1,36 @@
 .root {
-    -fx-padding: 10px;
+  -fx-padding: 10px;
+  -fx-background-color: white;
 }
+
 .button {
-    -fx-padding: 10px;
-    -fx-border-insets: 5px;
-    -fx-background-insets: 5px;
+  -fx-padding: 10px;
+  -fx-border-insets: 5px;
+  -fx-background-insets: 5px;
 }
 
 .footer {
-    -fx-padding: 10px;
-    -fx-alignment: center;
+  -fx-padding: 10px;
+  -fx-alignment: center;
+}
+
+#operationListHeaderPane {
+  -fx-background-color: #F7F7F7;
+  -fx-padding: 10px;
+  -fx-font-size: 12px;
+  -fx-font-weight: bold;
+  -fx-alignment: center;
+}
+
+#operationListHeaderPane #operationListHeaderText {
+  -fx-fill: dimgray;
+}
+
+#operationScrollPane, #operationFlowPane {
+  -fx-background-color: transparent;
+  -fx-background: transparent;
+
+}
+
+#operationScrollPane {
 }

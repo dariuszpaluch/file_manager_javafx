@@ -11,14 +11,16 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
-public class NameWindowController extends FlowPane{
+public class NameWindowController extends VBox {
 
   public class CompletedEvent extends Event {
 
@@ -34,6 +36,7 @@ public class NameWindowController extends FlowPane{
   public Button saveButton;
   public TextField nameTextField;
   public Text errorText;
+  public Text nameLabelTextField;
 
   private File oldFile;
 
@@ -54,6 +57,7 @@ public class NameWindowController extends FlowPane{
   void initialize() {
     LanguageMechanics.addItem(saveButton, "save");
     LanguageMechanics.addItem(cancelButton, "cancel");
+    LanguageMechanics.addItem(nameLabelTextField, "pleaseEnterFileName");
 
     this.nameTextField.setText(oldFile.getName());
     this.saveButton.setOnAction(this::onClickSave);
@@ -72,7 +76,7 @@ public class NameWindowController extends FlowPane{
     String newName = nameTextField.getText();
     File newFile = new File(this.oldFile.getParentFile().getPath() + File.separator + newName);
 
-    if (newFile.exists()) {
+    if (newFile.exists() && !Objects.equals(newName, this.oldFile.getName())) {
       errorText.setText(LanguageMechanics.getValueOfKey("errorFileWithThisNameIsExist"));
 
     } else {

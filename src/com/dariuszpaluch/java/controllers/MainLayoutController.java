@@ -31,6 +31,7 @@ public class MainLayoutController {
   public Tooltip cutButtonTooltip;
   public Tooltip deleteButtonTooltip;
   public Tooltip copyButtonTooltip;
+  public Text operationListHeaderText;
 
   enum OperationTypeEnum {
     COPIE,
@@ -89,6 +90,7 @@ public class MainLayoutController {
     LanguageMechanics.addItem(changeNameButton, "changeName");
     LanguageMechanics.addItem(copyButtonTooltip, "copy");
     LanguageMechanics.addItem(cutButtonTooltip, "cut");
+    LanguageMechanics.addItem(operationListHeaderText, "operationList");
 //        LanguageMechanics.addItem(pasteButtonTooltip, "paste");
 
 //        pasteButton.setDisable(true);
@@ -193,6 +195,7 @@ public class MainLayoutController {
         stage.initOwner(
                 ((Node) actionEvent.getSource()).getScene().getWindow());
         stage.setTitle(LanguageMechanics.getValueOfKey("changeNameWindow"));
+        stage.setResizable(false);
         stage.showAndWait();
 
       } catch (Exception e) {

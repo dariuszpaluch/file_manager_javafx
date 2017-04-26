@@ -7,16 +7,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.StackPane?>
 <fx:root
         maxWidth="200"
         prefWidth="200"
         type="javafx.scene.layout.VBox"
         xmlns="http://javafx.com/javafx/8.0.112"
+        stylesheets="@/styles/operation_progress.css"
         xmlns:fx="http://javafx.com/fxml/1">
-  <VBox VBox.vgrow="ALWAYS">
+  <VBox fx:id="contentPane" VBox.vgrow="ALWAYS">
     <FlowPane prefWrapLength="200.0">
-      <Text fx:id="removingFilesText" text="removingFilesText"/>
-      <Text fx:id="removingPathText" text="removingPathText"/>
+      <Text fx:id="removingFilesText" text="removingFiles"/>
+      <Text fx:id="removingPathText" text="removingPath"/>
 
       <FlowPane prefWrapLength="200.0">
         <Text fx:id="sizeTitleText" text="sizeTitleText">
@@ -28,12 +33,21 @@
       </FlowPane>
     </FlowPane>
 
-    <ProgressBar fx:id="progressBar" VBox.vgrow="ALWAYS"/>
-
-    <FlowPane prefWrapLength="200.0">
-      <Button fx:id="cancelButton" text="cancel"/>
+    <FlowPane>
+      <ProgressBar fx:id="progressBar" VBox.vgrow="ALWAYS"/>
+      <Button fx:id="cancelButton">
+        <graphic>
+          <ImageView fx:id="cancelImageView"  preserveRatio="true">
+            <image>
+              <Image  url="@/images/cancel.png" />
+            </image>
+          </ImageView>
+        </graphic>
+        <tooltip>
+          <Tooltip fx:id="cancelButtonTooltip" text="cancelTooltip" />
+        </tooltip>
+      </Button>
     </FlowPane>
-
   </VBox>
 
 </fx:root>

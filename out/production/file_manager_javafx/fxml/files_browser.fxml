@@ -13,6 +13,7 @@
 <?import javafx.scene.text.Text?>
 
 <?import javafx.collections.FXCollections?>
+<?import javafx.scene.layout.StackPane?>
 <VBox stylesheets="@/styles/files_browser.css" xmlns="http://javafx.com/javafx/8.0.112"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dariuszpaluch.java.controllers.FilesBrowserController">
 
@@ -43,7 +44,11 @@
     </Button>
     <ChoiceBox fx:id="driveChoiceBox"/>
   </FlowPane>
-  <Text fx:id="currentPathText" text="currentPath"/>
+
+  <HBox fx:id="currentPathStackPane">
+    <Text fx:id="currentPathText" text="currentPath"/>
+  </HBox>
+
 
   <MyTableView fx:id="filesTableView" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
     <columnResizePolicy>

@@ -1,12 +1,13 @@
-/*.go-up-button {*/
-    /*-fx-background-image: url("../resources/images/arrow_up.png");*/
-/*}*/
-
-/*.button {*/
-    /*-fx-background-image: url("../resources/images/arrow_up.png");*/
-
-/*}*/
-
 .root {
-    -fx-padding: 10px;
+  -fx-padding: 10px;
+}
+
+#currentPathStackPane {
+  -fx-background-color: #2196F3;
+  -fx-padding: 5px;
+}
+
+#currentPathText {
+  -fx-fill: white;
+  -fx-font-weight: bold;
 }

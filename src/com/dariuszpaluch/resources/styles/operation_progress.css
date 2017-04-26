@@ -1,0 +1,41 @@
+.root {
+}
+
+#contentPane {
+  -fx-padding: 5px;
+  -fx-border-width: 1px;
+  -fx-border-radius: 5px;
+  -fx-border-color: grey;
+  -fx-background-color: #E8E8E8;
+  -fx-end-margin: 10px;
+}
+
+#progressBar > .bar {
+  -fx-accent: #2196F3;
+  -fx-background-color: linear-gradient(
+          from 0px .75em to .75em 0px,
+          repeat,
+          -fx-accent 0%,
+          -fx-accent 49%,
+          derive(-fx-accent, 30%) 50%,
+          derive(-fx-accent, 30%) 99%
+  );
+}
+
+#cancelButton {
+   -fx-padding: 0;
+   -fx-background-color: #d9534f;
+   -fx-border-color: #d43f3a;
+   -fx-border-radius: 4px;
+ }
+
+#cancelButton:hover {
+  -fx-background-color: #c9302c;
+  -fx-border-color: #ac2925;
+}
+
+
+
+#cancelButton .image {
+
+}

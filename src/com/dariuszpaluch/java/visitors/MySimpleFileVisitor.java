@@ -43,14 +43,4 @@ public class MySimpleFileVisitor extends SimpleFileVisitor<Path> {
   public ReadOnlyLongProperty getProcessedFilesSizeProperty() {
     return ProcessedFilesSize;
   }
-
-
-  @Override
-  public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-    if (this.stop) {
-      return FileVisitResult.TERMINATE;
-    }
-
-    return FileVisitResult.CONTINUE;
-  }
 }
