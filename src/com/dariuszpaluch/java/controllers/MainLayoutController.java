@@ -6,6 +6,8 @@ import com.dariuszpaluch.java.visitors.CopyDirVisitor;
 import com.dariuszpaluch.java.visitors.DeleteDirVisitor;
 import com.dariuszpaluch.java.visitors.MoveDirVisitor;
 import com.dariuszpaluch.java.visitors.MySimpleFileVisitor;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -75,6 +77,7 @@ public class MainLayoutController {
 
   private OperationStorage operationStorage = null;
 
+  ObservableList<Node> operationList;
 
   @FXML
   void initialize() {
@@ -96,6 +99,9 @@ public class MainLayoutController {
 //        pasteButton.setDisable(true);
 
     LanguageMechanics.updateAllItems();
+
+    operationList = FXCollections.observableArrayList(operationFlowPane.getChildren());
+    operationFlowPane.getChildren().setAll(operationList);
 //    changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
   }
 
@@ -144,7 +150,14 @@ public class MainLayoutController {
     operationProgressController.addEventHandler(OperationProgressController.COMPLETED_EVENT_TYPE, event -> {
       this.updateAllFilesBrowsers();
     });
-    operationFlowPane.getChildren().add(operationProgressController);
+
+    ObservableList<Node> operationListTemp = FXCollections.observableArrayList();
+    operationListTemp.add(operationProgressController);
+
+    for(Node node: operationFlowPane.getChildren()) {
+      operationListTemp.add(node);
+    }
+    operationFlowPane.getChildren().setAll(operationListTemp);
   }
 
   private void onClickDeleteButton(ActionEvent actionEvent) {
