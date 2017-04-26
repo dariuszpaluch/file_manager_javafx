@@ -1,5 +1,6 @@
 package com.dariuszpaluch.java.utils;
 
+import com.dariuszpaluch.java.controllers.FilesBrowserController;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.Tooltip;
@@ -36,6 +37,12 @@ public class LanguageMechanics {
   static private Set<ViewItem> elementsWithSetText = new HashSet<ViewItem>();
   static private StageItem stageItem = null;
   static private Locale locale = Locale.getDefault();
+
+  static private Set<FilesBrowserController> filesBrowsersSet = new HashSet<>();
+
+  public static void addFilesBrowser(FilesBrowserController filesBrowser) {
+    filesBrowsersSet.add(filesBrowser);
+  }
 
   public static Locale getLocale() {
     return locale;
@@ -83,6 +90,10 @@ public class LanguageMechanics {
 
     for (ViewItem item : elementsWithSetText) {
       setText(item);
+    }
+
+    for(FilesBrowserController item : filesBrowsersSet) {
+      item.updateAll();
     }
 
     stageItem.stage.setTitle(bundle.getString(stageItem.bundleKey));

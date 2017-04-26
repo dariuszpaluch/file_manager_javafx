@@ -11,13 +11,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -36,11 +33,10 @@ public class MainLayoutController {
   public Text operationListHeaderText;
 
   enum OperationTypeEnum {
-    COPIE,
-    MOVE
-  }
-
-  ;
+    COPY,
+    CUT,
+    DELETE
+  };
 
   class OperationStorage {
     private Path path;
@@ -94,6 +90,8 @@ public class MainLayoutController {
     LanguageMechanics.addItem(copyButtonTooltip, "copy");
     LanguageMechanics.addItem(cutButtonTooltip, "cut");
     LanguageMechanics.addItem(operationListHeaderText, "operationList");
+    LanguageMechanics.addFilesBrowser(leftFilesBrowserController);
+    LanguageMechanics.addFilesBrowser(rightFilesBrowserController);
 //        LanguageMechanics.addItem(pasteButtonTooltip, "paste");
 
 //        pasteButton.setDisable(true);
@@ -103,6 +101,7 @@ public class MainLayoutController {
     operationList = FXCollections.observableArrayList(operationFlowPane.getChildren());
     operationFlowPane.getChildren().setAll(operationList);
 //    changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
+    
   }
 
   private FilesBrowserController getSelectedFilesBrowserController() throws NullPointerException {
@@ -145,8 +144,8 @@ public class MainLayoutController {
     this.rightFilesBrowserController.updateAll();
   }
 
-  private void addOperation(Path path, MySimpleFileVisitor visitor) {
-    OperationProgressController operationProgressController = new OperationProgressController(path, visitor);
+  private void addOperation(Path path, MySimpleFileVisitor visitor, OperationTypeEnum type) {
+    OperationProgressController operationProgressController = new OperationProgressController(path, visitor, type);
     operationProgressController.addEventHandler(OperationProgressController.COMPLETED_EVENT_TYPE, event -> {
       this.updateAllFilesBrowsers();
     });
@@ -164,7 +163,7 @@ public class MainLayoutController {
     Path selectedPath = null;
     try {
       selectedPath = getSelectedFilesBrowserController().getSelectedPaths();
-      this.addOperation(selectedPath, new DeleteDirVisitor());
+      this.addOperation(selectedPath, new DeleteDirVisitor(), OperationTypeEnum.DELETE);
     } catch (NullPointerException e) {
       DialogUtils.showDialogNoFileSelect();
     }
@@ -175,7 +174,7 @@ public class MainLayoutController {
     try {
       selectedPath = getSelectedFilesBrowserController().getSelectedPaths();
       Path toPath = getUnSelectedFilesBrowserController().getCurrentPath();
-      this.addOperation(selectedPath, new MoveDirVisitor(selectedPath, toPath));
+      this.addOperation(selectedPath, new MoveDirVisitor(selectedPath, toPath), OperationTypeEnum.CUT);
     } catch (NullPointerException e) {
       DialogUtils.showDialogNoFileSelect();
     }
@@ -186,7 +185,7 @@ public class MainLayoutController {
     try {
       selectedPath = getSelectedFilesBrowserController().getSelectedPaths();
       Path toPath = getUnSelectedFilesBrowserController().getCurrentPath();
-      this.addOperation(selectedPath, new CopyDirVisitor(selectedPath, toPath));
+      this.addOperation(selectedPath, new CopyDirVisitor(selectedPath, toPath), OperationTypeEnum.COPY);
     } catch (NullPointerException e) {
       DialogUtils.showDialogNoFileSelect();
     }

@@ -29,6 +29,8 @@ public class Main extends Application {
 //        scene.getStylesheets().add(getClass().getResource("/styles/theme.css").toExternalForm());
 
     primaryStage.setResizable(true);
+    primaryStage.setMinWidth(1200);
+    primaryStage.setMinHeight(500);
     primaryStage.setScene(scene);
     primaryStage.show();
   }

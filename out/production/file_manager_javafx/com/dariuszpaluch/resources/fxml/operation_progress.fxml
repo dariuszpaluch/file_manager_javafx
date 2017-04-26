@@ -20,7 +20,7 @@
         xmlns:fx="http://javafx.com/fxml/1">
   <VBox fx:id="contentPane" VBox.vgrow="ALWAYS">
     <FlowPane prefWrapLength="200.0">
-      <Text fx:id="removingFilesText" text="removingFiles"/>
+      <Text fx:id="operationTypeFilesText" text="operationType"/>
       <Text fx:id="removingPathText" text="removingPath"/>
 
       <FlowPane prefWrapLength="200.0">

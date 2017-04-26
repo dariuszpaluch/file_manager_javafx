@@ -25,12 +25,14 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 public class OperationProgressController extends VBox {
+  private MainLayoutController.OperationTypeEnum type = null;
+
   private Path path;
   public ProgressBar progressBar;
   public Button cancelButton;
   public Text sizeTitleText;
   public Text totalSizeText;
-  public Text removingFilesText;
+  public Text operationTypeFilesText;
   public Text removingPathText;
   public Tooltip cancelButtonTooltip;
 
@@ -52,7 +54,8 @@ public class OperationProgressController extends VBox {
   public static EventType<Event> COMPLETED_EVENT_TYPE = new EventType<>("COMPLETED");
   Event completedEvent = new CompletedEvent(COMPLETED_EVENT_TYPE);
 
-  public OperationProgressController(Path path, MySimpleFileVisitor operationSimpleFileVisitor) {
+  public OperationProgressController(Path path, MySimpleFileVisitor operationSimpleFileVisitor, MainLayoutController.OperationTypeEnum type) {
+    this.type = type;
     this.path = path;
 
     MySimpleFileVisitor getSizeDirVisitor = new GetSizeDirVisitor();
@@ -89,8 +92,22 @@ public class OperationProgressController extends VBox {
 
   @FXML
   void initialize() {
+    String operationBundleKey = "";
+
+    if(this.type == MainLayoutController.OperationTypeEnum.COPY) {
+      //copy
+      operationBundleKey = "copieng";
+    }
+    else if(this.type == MainLayoutController.OperationTypeEnum.CUT) {
+      //cut
+      operationBundleKey = "cutting";
+    }else {
+      //delete
+      operationBundleKey = "deleting";
+    }
+
+    LanguageMechanics.addItem(operationTypeFilesText, operationBundleKey);
     LanguageMechanics.addItem(cancelButtonTooltip, "cancel");
-    LanguageMechanics.addItem(removingFilesText, "deleting");
     LanguageMechanics.addItem(sizeTitleText, "size");
 
     removingPathText.setText(this.path.toString());
@@ -107,7 +124,7 @@ public class OperationProgressController extends VBox {
     this.operationTreeTheadTask.cancel();
 
     double temp = this.progressBar.getProgress();
-    this.removingFilesText.setText("ZAKONCZONE");
+//    this.removingFilesText.setText("ZAKONCZONE");
   }
 
   private void onGetTotalSizeSuccess() {
@@ -123,6 +140,24 @@ public class OperationProgressController extends VBox {
 
   private void onOperationSuccess() {
     cancelButton.setVisible(false);
+
+    Platform.runLater(() -> {
+      String operationBundleKey = "";
+
+      if(this.type == MainLayoutController.OperationTypeEnum.COPY) {
+        //copy
+        operationBundleKey = "copiengCompleted";
+      }
+      else if(this.type == MainLayoutController.OperationTypeEnum.CUT) {
+        //cut
+        operationBundleKey = "cuttingCompleted";
+      }else {
+        //delete
+        operationBundleKey = "deletingCompleted";
+      }
+
+      LanguageMechanics.addItem(operationTypeFilesText, operationBundleKey);
+    });
     this.fireEvent(completedEvent);
   }
 

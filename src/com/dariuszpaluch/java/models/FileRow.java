@@ -22,7 +22,7 @@ public class FileRow {
     String name = file.getName();
 //    String ext = FileUtils.getExtension(file);
     String size = file.isDirectory() ? "<DIR>" : Long.toString(file.length());
-    String date = DateUtils.getStringDateWithTime(file.lastModified());
+    String date = DateUtils.getStringDate(file.lastModified());
     String attr = FileUtils.getPermissionsToString(file);
 
 
