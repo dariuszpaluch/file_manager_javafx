@@ -13,7 +13,7 @@
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.control.ScrollPane?>
 <BorderPane stylesheets="@/styles/main_layout.css" xmlns="http://javafx.com/javafx/8.0.112"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dariuszpaluch.java.Controller">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dariuszpaluch.java.controllers.MainLayoutController">
   <top>
     <FlowPane>
       <Button fx:id="changeLanguageButton" text="EN"/>

@@ -1,10 +1,11 @@
-package com.dariuszpaluch.java;
+package com.dariuszpaluch.java.controllers;
 
-import com.dariuszpaluch.java.utils.utils.DialogUtils;
-import com.dariuszpaluch.java.utils.visitor.CopyDirVisitor;
-import com.dariuszpaluch.java.utils.visitor.DeleteDirVisitor;
-import com.dariuszpaluch.java.utils.visitor.MoveDirVisitor;
-import com.dariuszpaluch.java.utils.visitor.MySimpleFileVisitor;
+import com.dariuszpaluch.java.utils.LanguageMechanics;
+import com.dariuszpaluch.java.utils.DialogUtils;
+import com.dariuszpaluch.java.visitors.CopyDirVisitor;
+import com.dariuszpaluch.java.visitors.DeleteDirVisitor;
+import com.dariuszpaluch.java.visitors.MoveDirVisitor;
+import com.dariuszpaluch.java.visitors.MySimpleFileVisitor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -12,22 +13,19 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Locale;
 
-public class Controller {
+public class MainLayoutController {
   //    public Tooltip pasteButtonTooltip;
   public Tooltip cutButtonTooltip;
   public Tooltip deleteButtonTooltip;
@@ -184,37 +182,37 @@ public class Controller {
 //
 //    }
 
-    private void openEditNameWindow(ActionEvent actionEvent) {
+  private void openEditNameWindow(ActionEvent actionEvent) {
+    try {
+      Path selectedPath = getSelectedFilesBrowserController().getSelectedPaths();
+      File selectedFile = selectedPath.toFile();
+      String name = selectedPath.getFileName().toString();
       try {
-        Path selectedPath = getSelectedFilesBrowserController().getSelectedPaths();
-        File selectedFile = selectedPath.toFile();
-        String name = selectedPath.getFileName().toString();
-            try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/name_window.fxml"));
-                Parent root = (Parent) fxmlLoader.load();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.initModality(Modality.WINDOW_MODAL);
-                stage.initOwner(
-                        ((Node)actionEvent.getSource()).getScene().getWindow() );
-                NameWindowController controller = fxmlLoader.<NameWindowController>getController();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/name_window.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(
+                ((Node) actionEvent.getSource()).getScene().getWindow());
+        NameWindowController controller = fxmlLoader.<NameWindowController>getController();
 //                controller.setName(name);
-                controller.setOldFile(selectedFile);
+        controller.setOldFile(selectedFile);
 //                stage.setOnCloseRequest(event -> readAllFilesInFolder(currentPath));
-                stage.setTitle("Change file name");
-                stage.showAndWait();
-                stage.setOnCloseRequest(event -> {
-                    System.out.println("View  got close request. Notifying callback");
+        stage.setTitle("Change file name");
+        stage.showAndWait();
+        stage.setOnCloseRequest(event -> {
+          System.out.println("View  got close request. Notifying callback");
 //                    onCloseCallback.get().invoke();
-                });
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-//        }
-      } catch (NullPointerException e) {
-        DialogUtils.showDialogNoFileSelect();
+        });
+      } catch (Exception e) {
+        e.printStackTrace();
       }
+//        }
+    } catch (NullPointerException e) {
+      DialogUtils.showDialogNoFileSelect();
     }
+  }
 
 
 }

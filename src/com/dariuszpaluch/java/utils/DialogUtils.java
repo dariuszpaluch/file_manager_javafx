@@ -1,8 +1,6 @@
-package com.dariuszpaluch.java.utils.utils;
+package com.dariuszpaluch.java.utils;
 
-import com.dariuszpaluch.java.LanguageMechanics;
 import javafx.scene.control.Alert;
-import javafx.scene.text.Text;
 
 import java.util.ResourceBundle;
 

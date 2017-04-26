@@ -1,4 +1,4 @@
-package com.dariuszpaluch.java.utils.visitor;
+package com.dariuszpaluch.java.visitors;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,6 +14,10 @@ public class MoveDirVisitor extends CopyDirVisitor {
 
   @Override
   public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) throws IOException {
+    if (this.stop) {
+      return FileVisitResult.TERMINATE;
+    }
+
     FileVisitResult result = super.visitFile(path, attrs);
 
     final File currentFile = path.toFile();
@@ -24,6 +28,10 @@ public class MoveDirVisitor extends CopyDirVisitor {
 
   @Override
   public FileVisitResult postVisitDirectory(Path dir, IOException exc) throws IOException {
+    if (this.stop) {
+      return FileVisitResult.TERMINATE;
+    }
+
     final File currentFile = dir.toFile();
     currentFile.delete();
 

@@ -10,7 +10,7 @@
         hgap="10" vgap="10"
         xmlns:fx="http://javafx.com/fxml/1"
         xmlns="http://javafx.com/javafx/8.0.111"
-        fx:controller="com.dariuszpaluch.java.NameWindowController">
+        fx:controller="com.dariuszpaluch.java.controllers.NameWindowController">
 
     <TextField fx:id="nameTextField" />
     <Text fx:id="errorText" />
