@@ -73,6 +73,10 @@ public class FilesBrowserController {
     dateTableColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
     attrTableColumn.setCellValueFactory(new PropertyValueFactory<>("attr"));
 
+    LanguageMechanics.addItem(nameTableColumn, "name");
+    LanguageMechanics.addItem(sizeTableColumn, "size");
+    LanguageMechanics.addItem(dateTableColumn, "date");
+    LanguageMechanics.addItem(attrTableColumn, "attr");
 
     this.filesTableView.setItems(this.filesRows);
     this.filesTableView.setOnMouseClicked(this::onTableRowClick);

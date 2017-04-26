@@ -1,6 +1,7 @@
 package com.dariuszpaluch.java.utils;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.Tooltip;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -65,6 +66,8 @@ public class LanguageMechanics {
       ((Button) item.object).setText(bundle.getString(item.bundleKey));
     } else if (item.object instanceof Tooltip) {
       ((Tooltip) item.object).setText(bundle.getString(item.bundleKey));
+    } else if (item.object instanceof TableColumn) {
+      ((TableColumn) item.object).setText(bundle.getString(item.bundleKey));
     }
   }
 
