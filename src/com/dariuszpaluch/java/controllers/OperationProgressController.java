@@ -124,7 +124,7 @@ public class OperationProgressController extends VBox {
     this.operationTreeTheadTask.cancel();
 
     double temp = this.progressBar.getProgress();
-//    this.removingFilesText.setText("ZAKONCZONE");
+    LanguageMechanics.addItem(operationTypeFilesText, "canceled");
   }
 
   private void onGetTotalSizeSuccess() {

@@ -13,9 +13,7 @@ import javafx.fxml.FXML;
 
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.Tooltip;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -24,6 +22,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.nio.file.Path;
 import java.util.Locale;
+import java.util.Optional;
 
 public class MainLayoutController {
   //    public Tooltip pasteButtonTooltip;
@@ -101,7 +100,7 @@ public class MainLayoutController {
     operationList = FXCollections.observableArrayList(operationFlowPane.getChildren());
     operationFlowPane.getChildren().setAll(operationList);
 //    changeLanguageButton.setText(LanguageMechanics.getLocale().getLanguage().toUpperCase());
-    
+
   }
 
   private FilesBrowserController getSelectedFilesBrowserController() throws NullPointerException {
@@ -163,7 +162,19 @@ public class MainLayoutController {
     Path selectedPath = null;
     try {
       selectedPath = getSelectedFilesBrowserController().getSelectedPaths();
-      this.addOperation(selectedPath, new DeleteDirVisitor(), OperationTypeEnum.DELETE);
+
+      Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+      confirm.setTitle(LanguageMechanics.getValueOfKey("removeFileDialog"));
+      confirm.setHeaderText(LanguageMechanics.getValueOfKey("removeFileDialog"));
+      confirm.setContentText(LanguageMechanics.getValueOfKey("areYouSureToRemoveFile"));
+
+      Optional<ButtonType> result = confirm.showAndWait();
+      if (result.get() == ButtonType.OK){
+        //ok
+        this.addOperation(selectedPath, new DeleteDirVisitor(), OperationTypeEnum.DELETE);
+      } else {
+        //cancel
+      }
     } catch (NullPointerException e) {
       DialogUtils.showDialogNoFileSelect();
     }

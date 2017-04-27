@@ -19,7 +19,6 @@
         stylesheets="@/styles/operation_progress.css"
         xmlns:fx="http://javafx.com/fxml/1">
   <VBox fx:id="contentPane" VBox.vgrow="ALWAYS">
-    <FlowPane prefWrapLength="200.0">
       <Text fx:id="operationTypeFilesText" text="operationType"/>
       <Text fx:id="removingPathText" text="removingPath"/>
 
@@ -31,7 +30,6 @@
         </Text>
         <Text fx:id="totalSizeText" text="totalSizeText"/>
       </FlowPane>
-    </FlowPane>
 
     <FlowPane>
       <ProgressBar fx:id="progressBar" VBox.vgrow="ALWAYS"/>
