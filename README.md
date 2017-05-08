@@ -5,5 +5,5 @@ It's my file manager, written in JavaFx.
 ### Operation Sysetm
 
 - Windows
-- Linux (didn't tested)
+- Linux
 - OS X (didn't tested)
